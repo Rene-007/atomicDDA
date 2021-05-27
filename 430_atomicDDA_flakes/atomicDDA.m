@@ -5,7 +5,7 @@ clear
 gpu = gpuDevice; reset(gpu);
 addpath('../000_data');
 
-wavelengths = 400:05:900;                        % range of wavelengths Start:Step:Stop in nm
+wavelengths = 400:05:700;                        % range of wavelengths Start:Step:Stop in nm
 phi = 0/180*pi;                                  % Angle of incidence -- zero means normal incidence
 
 
@@ -15,16 +15,16 @@ phi = 0/180*pi;                                  % Angle of incidence -- zero me
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "sphere_2334.csv" );
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "monomer_22713.csv" );
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "monomer_1000000.csv" );
-% [r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_48413.csv" );
+[r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_48413.csv" );
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_750000.csv" );
-[r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_1000000.csv" );
+% [r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_1000000.csv" );
 
 
 %% Visualization
 % show_3d(r0,r_on); 
 show_3d(r0,r_surf); 
 % show_2d(r0,r_on,lattice); 
-return;
+% return;
                  
 
 %% Some handy derivations
