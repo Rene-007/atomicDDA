@@ -12,40 +12,40 @@ This repository aims on the one hand to be a step-by-step introduction to DDA as
 
 The code was originally developed with [Matlab](https://www.mathworks.com/products/matlab.html "Link to Matlab product page from MathWorks") but implementation in [Julia](https://julialang.org/ "Link to the Julia programming language homepage") and [Rust](https://www.rust-lang.org/ "Linkt to the Rust programming language homepage") are intended. It is divided in four main chapters and several subsections:
 
->__I. A simple introduction to the Discrete Dipole Approximation__
-    >* [100_simpleDDA]()
+__I. A simple introduction to the Discrete Dipole Approximation__
+  * [100_simpleDDA]()
         The basic outline of the theory and an easy to follow simple implementation.
-    >- [110_simpleDDA_faster-setup]()
+  * [110_simpleDDA_faster-setup]()
         Some optimizations to the matrix setup.
     
->__II. The standard way of solving__
-    >* [200_standardDDA]()
+__II. The standard way of solving__
+  * [200_standardDDA]()
         Introduction to solvers and how to implement own ones.
-    >- [210_standardDDA_optimized-solvers]()
+  * [210_standardDDA_optimized-solvers]()
         A simple way to improve the condition of the matrix.
 
->__III. Advanced features to drastically improve the performance__
-    >* [300_advancedDDA]()
+__III. Advanced features to drastically improve the performance__
+  * [300_advancedDDA]()
         Introduction and preparations for the convolution method.    
-    >- [310_advancedDDA_FFT]()
+  * [310_advancedDDA_FFT]()
         Implementation of the convolution method.
-    >* [320_advancedDDA_FFT-optimized]()
+  * [320_advancedDDA_FFT-optimized]()
         Optimization of the solving algorithm.
-    >- [330_advancedDDA_GPU]()
+  * [330_advancedDDA_GPU]()
         Solve the problem on the GPU and gain a lot.
-    >* [340_advancedDDA_GPU-optimized]()
+  * [340_advancedDDA_GPU-optimized]()
         Final optimizations.
 
->__IV. The atomicDDA__
-    >* [400_atomicDDA]()
+__IV. The atomicDDA__
+  * [400_atomicDDA]()
         Introduction of the simple closed packaging.    
-    >- [410_atomicDDA_lattices]()
+  * [410_atomicDDA_lattices]()
         Generalization of the code for different lattices.
-    >* [420_atomicDDA_stacking-faults]()
+  * [420_atomicDDA_stacking-faults]()
         Adding stacking faults to the game.
-    >- [430_atomicDDA_flakes]()
+  * [430_atomicDDA_flakes]()
         Importing and solving arbitrary structures base on flakes.
-    >* [440_atomicDDA_flatten]()
+  * [440_atomicDDA_flatten]()
         Bonus. A different memory layout.
 
 The chapters and subsection encode the first and second number of the subreporitories, resepectively, and the third number indicate the programming language (0 = Matlab, 1 = Julia, 2 = Rust). The subreporitories are self contained and only [000_data]() is needed for additional required data.
