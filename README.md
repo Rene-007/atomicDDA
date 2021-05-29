@@ -12,7 +12,7 @@ This repository aims on the one hand to be a step-by-step introduction to DDA as
 
 The code was originally developed with [Matlab](https://www.mathworks.com/products/matlab.html "Link to Matlab product page from MathWorks") but implementation in [Julia](https://julialang.org/ "Link to the Julia programming language homepage") and [Rust](https://www.rust-lang.org/ "Linkt to the Rust programming language homepage") are intended. It is divided in four main chapters and several subsections:
 
->__I. A simple introduction to the Discrete Dipole Approximation__
+__I. A simple introduction to the Discrete Dipole Approximation__
     * [100_simpleDDA]()
         The basic outline of the theory and an easy to follow simple implementation.
     - [110_simpleDDA_faster-setup]()
