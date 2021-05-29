@@ -21,7 +21,7 @@ __I. A simple introduction to the Discrete Dipole Approximation__
 __II. The standard way of solving__
   * [200_standardDDA]()
         Introduction to solvers and how to implement own ones.
-    * [210_standardDDA_optimized-solvers]()
+  * [210_standardDDA_optimized-solvers]()
         A simple way to improve the condition of the matrix.
 
 __III. Advanced features to drastically improve the performance__
