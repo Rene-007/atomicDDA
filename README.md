@@ -15,7 +15,7 @@ The code was originally developed with [Matlab](https://www.mathworks.com/produc
 __I. A simple introduction to the Discrete Dipole Approximation__
   * [100_simpleDDA](100_simpleDDA/)  
     _The basic outline of the theory and an easy to follow simple implementation._
-  * [110_simpleDDA_faster-setup]()  
+  * [110_simpleDDA_faster-setup](110_simpleDDA_faster-setup)  
     _Some optimizations to the matrix setup._
     
 __II. The standard way of solving__
