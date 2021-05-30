@@ -55,7 +55,7 @@ The chapters and subsection encode the first and second number of the subreporit
 The discrete dipole approximation is a well-estabished method and I like to mention a few publications this code is based on:
 * bla
 * bli
-* blu
+* blub
 
 
 ## License
