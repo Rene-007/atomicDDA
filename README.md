@@ -14,41 +14,41 @@ The code was originally developed with [Matlab](https://www.mathworks.com/produc
 
 __I. A simple introduction to the Discrete Dipole Approximation__
   * [100_simpleDDA]()  
-    The basic outline of the theory and an easy to follow simple implementation.
+    _The basic outline of the theory and an easy to follow simple implementation._
   * [110_simpleDDA_faster-setup]()  
-    Some optimizations to the matrix setup.
+    _Some optimizations to the matrix setup._
     
 __II. The standard way of solving__
   * [200_standardDDA]()    
-    Introduction to solvers and how to implement own ones.
+    _Introduction to solvers and how to implement own ones._
   * [210_standardDDA_optimized-solvers]()    
-    A simple way to improve the condition of the matrix.
+    _A simple way for pre-conditioning the matrix._
 
 __III. Advanced features to drastically improve the performance__
   * [300_advancedDDA]()  
-    Introduction and preparations for the convolution method.    
+    _Introduction of and preparations for the convolution method._    
   * [310_advancedDDA_FFT]()  
-    Implementation of the convolution method.
+    _Implementation of the convolution method._
   * [320_advancedDDA_FFT-optimized]()  
-    Optimization of the solving algorithm.
+    _Optimization of the solving algorithm._
   * [330_advancedDDA_GPU]()  
-    Solve the problem on the GPU and gain a lot.
+    _Solving the problem much faster on the GPU._
   * [340_advancedDDA_GPU-optimized]()  
-    Final optimizations.
+    _Final GPU optimizations._
 
 __IV. The atomicDDA__
   * [400_atomicDDA]()  
-    Introduction of the simple closed packaging.    
+    _Introducing face-centered cubic packaging._    
   * [410_atomicDDA_lattices]()  
-    Generalization of the code for different lattices.
+    _Generalization of the code for different lattices._
   * [420_atomicDDA_stacking-faults]()  
-    Adding stacking faults to the game.
+    _Adding a lattice with stacking faults._
   * [430_atomicDDA_flakes]()  
-    Importing and solving arbitrary structures base on flakes.
+    _Importing and solving arbitrary structures based on flakes._
   * [440_atomicDDA_flatten]()  
-    Bonus. A different memory layout.
+    _Bonus. A different memory layout._
 
-The chapters and subsection encode the first and second number of the subreporitories, resepectively, and the third number indicate the programming language (0 = Matlab, 1 = Julia, 2 = Rust). The subreporitories are self contained and only [000_data]() is needed for additional required data.
+The chapters and subsection encode the first and second numbers of the subreporitories, resepectively, and the third number indicate the programming language (0 = Matlab, 1 = Julia, 2 = Rust). The subreporitories are self contained and only [000_data]() is needed for optical / flake data.
 
 
 ## Credits
