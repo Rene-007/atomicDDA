@@ -45,7 +45,7 @@ __IV. The atomicDDA__
     _Adding a lattice with stacking faults._
   * [430_atomicDDA_flakes](430_atomicDDA_flakes)  
     _Importing and solving arbitrary structures based on flakes._
-  * [440_atomicDDA_flatten](440_atomicDDA_flatten)  
+  * [440_atomicDDA_flat](440_atomicDDA_flat)  
     _Bonus. A different memory layout._
 
 The chapters and subsection encode the first and second numbers of the subreporitories, resepectively, and the third number indicate the programming language (0 = Matlab, 1 = Julia, 2 = Rust). The subreporitories are self contained and only [000_data](000_data) is needed for optical / flake data.
