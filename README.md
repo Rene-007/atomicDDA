@@ -4,7 +4,7 @@ Simulating the optical properties of metal nanostructure is a well-established f
 
 ![A gold dimer ready to be simulated](/003_media/regrown-dimer_1-000-000-atoms.jpg "A gold dimer ready to be simulated")
 
-Here we present the atomic Discrete Dipole Approximation (atomicDDA) which solves these problems. As its name implies it is based on the Discrete Dipole Approximation (DDA), uses the known convolution method to improve on computation time as well as memory usage and implements atomic lattices with stacking faults to mimic typical arrangements of e.g. atoms in gold flakes and structures thereof. It is implemented to also run on modern GPUs, making it possible to solve the problem over a full spectrum (400-900nm, pitch 5nm) for a 1,000,000 atom dimer in 25 minutes.
+Here we present the atomic Discrete Dipole Approximation (atomicDDA) which solves these problems. As its name implies it is based on the Discrete Dipole Approximation (DDA), uses the known convolution method to improve on computation time as well as memory usage and implements atomic lattices with stacking faults to mimic typical arrangements of e.g. atoms in gold flakes and structures thereof. It is implemented to also run on modern GPUs, making it possible to solve the problem of a 1,000,000-atom dimer for the full spectrum (400-900nm, pitch 5nm) in under 30 minutes.
 
 # Outline
 
@@ -58,7 +58,6 @@ The discrete dipole approximation is a well-estabished method and I like to ment
 * Goodman, J. J., Flatau, P. J. & Draine, B. T. *Application of fast-Fourier-transform techniques to the discrete-dipole approximation.* Opt. Lett. __16__, 1198 (1991). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1364/OL.16.001198)
 * Schmehl, R., Nebeker, B. M. & Hirleman, E. D. *Discrete-dipole approximation for scattering by features on surfaces by means of a two-dimensional fast Fourier transform technique.* J. Opt. Soc. Am. A __14__, 3026 (1997). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1364/JOSAA.14.003026)
 * Loke, V. L. Y., Pinar Mengüç, M. & Nieminen, T. A. *Discrete-dipole approximation with surface interaction: Computational toolbox for MATLAB.* J. Quant. Spectrosc. Radiat. Transf. __112__, 1711 (2011). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1016/j.jqsrt.2011.03.012)
-
 
 
 
