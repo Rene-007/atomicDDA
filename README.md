@@ -53,9 +53,13 @@ The chapters and subsection encode the first and second numbers of the subrepori
 
 ## Credits
 The discrete dipole approximation is a well-estabished method and I like to mention a few publications this code is based on:
-* bla
-* bli
-* blub update
+* Purcell, E. M. & Pennypacker, C. R. *Scattering and Absorption of Light by Nonspherical Dielectric Grains.* Astrophys. J. __186__, 705 (1973). [<img src="003_media/External.svg" height="14">](www.doi.org/10.1086/152538)
+* Draine, B. T. *The discrete-dipole approximation and its application to interstellar graphite grains.* Astrophys. J. __333__, 848 (1988). [<img src="003_media/External.svg" height="14">](www.doi.org/10.1086/166795)
+* Goodman, J. J., Flatau, P. J. & Draine, B. T. *Application of fast-Fourier-transform techniques to the discrete-dipole approximation.* Opt. Lett. __16__, 1198 (1991). [<img src="003_media/External.svg" height="14">](www.doi.org/10.1364/OL.16.001198)
+* Schmehl, R., Nebeker, B. M. & Hirleman, E. D. *Discrete-dipole approximation for scattering by features on surfaces by means of a two-dimensional fast Fourier transform technique.* J. Opt. Soc. Am. A __14__, 3026 (1997). [<img src="003_media/External.svg" height="14">](www.doi.org/10.1364/JOSAA.14.003026)
+* Loke, V. L. Y., Pinar Mengüç, M. & Nieminen, T. A. *Discrete-dipole approximation with surface interaction: Computational toolbox for MATLAB.* J. Quant. Spectrosc. Radiat. Transf. __112__, 1711 (2011). [<img src="003_media/External.svg" height="14">](www.doi.org/10.1016/j.jqsrt.2011.03.012)
+
+
 
 
 ## License
@@ -63,4 +67,4 @@ This project is licensed under the [GNU General Public License v2.0](LICENSE "Li
 
 
 ## Contributions
-Contributions such as bug fixes or enhancements are welcome -- especially extensions such as [incorporating a substrate]().
+Contributions such as bug fixes or enhancements are welcome -- especially extensions such as [incorporating a substrate](www.doi.org/10.1021/acs.jpcc.5b09271) or [charges](www.doi.org/10.1021/acs.jpcc.9b07410).
