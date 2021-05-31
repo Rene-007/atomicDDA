@@ -57,7 +57,7 @@ The discrete dipole approximation is a well-estabished method and I like to ment
 * Draine, B. T. *The discrete-dipole approximation and its application to interstellar graphite grains.* Astrophys. J. __333__, 848 (1988). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1086/166795)
 * Goodman, J. J., Flatau, P. J. & Draine, B. T. *Application of fast-Fourier-transform techniques to the discrete-dipole approximation.* Opt. Lett. __16__, 1198 (1991). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1364/OL.16.001198)
 * Schmehl, R., Nebeker, B. M. & Hirleman, E. D. *Discrete-dipole approximation for scattering by features on surfaces by means of a two-dimensional fast Fourier transform technique.* J. Opt. Soc. Am. A __14__, 3026 (1997). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1364/JOSAA.14.003026)
-* Loke, V. L. Y., Pinar Mengüç, M. & Nieminen, T. A. *Discrete-dipole approximation with surface interaction: Computational toolbox for MATLAB.* J. Quant. Spectrosc. Radiat. Transf. __112__, 1711 (2011). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1016/j.jqsrt.2011.03.012){:target="_blank"}
+* Loke, V. L. Y., Pinar Mengüç, M. & Nieminen, T. A. *Discrete-dipole approximation with surface interaction: Computational toolbox for MATLAB.* J. Quant. Spectrosc. Radiat. Transf. __112__, 1711 (2011). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1016/j.jqsrt.2011.03.012)
 
 
 
