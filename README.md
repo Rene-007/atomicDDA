@@ -4,7 +4,7 @@ Simulating the optical properties of metal nanostructure is a well-established f
 
 ![A gold dimer ready to be simulated](/003_media/regrown-dimer_1-000-000-atoms.jpg "A gold dimer ready to be simulated")
 
-Here we present the atomic Discrete Dipole Approximation (atomicDDA) which solves these problems. As its name implies it is based on the Discrete Dipole Approximation (DDA), uses the known convolution method to improve on computation time as well as memory usage and implements atomic lattices with stacking faults to mimic typical arrangements of e.g. atoms in gold flakes and structures thereof. It is implemented to also run on modern GPUs, making it possible to solve the problem of a 1,000,000-atom dimer for the full spectrum (400-900nm, pitch 5nm) in under 30 minutes.
+Here we present the atomic Discrete Dipole Approximation (atomicDDA) which solves these problems. As its name implies it is based on the Discrete Dipole Approximation (DDA), uses the known convolution method to improve on computation time as well as memory usage and implements atomic lattices with stacking faults to mimic typical arrangements of e.g. atoms in gold flakes and structures thereof. It is implemented to also run on modern GPUs, making it possible to solve the problem of the depicted 1,000,000-atom gold dimer in under 30 minutes (spectrum 400-900nm, pitch 5nm).
 
 # Outline
 

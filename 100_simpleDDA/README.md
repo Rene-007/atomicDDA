@@ -1,6 +1,6 @@
-# 110 simple DDA
+# 100 simple DDA
 
-## Introduction to DDA
+## An Introduction to the Discrete Dipole Approximation (DDA)
 
 * General picture
     * Graphics: Cube -> divided into dipoles
@@ -12,3 +12,4 @@
 
 * More formal
     * matrix fields and so on
+
