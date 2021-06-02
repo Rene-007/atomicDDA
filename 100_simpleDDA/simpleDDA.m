@@ -9,7 +9,7 @@ phi = 0/180*pi;                                  % Angle of incidence -- zero me
 
 %% Definition of the particle
 spacing = 5;                                     % dipole spacing in nm
-r0 = create_Cube(50,40,30, spacing);             % positions of all dipoles of a rectangular cuboid
+r0 = create_Cube(50,40,30, spacing);             % positions of all dipoles of a cube
 % r0 = create_Sphere(50, spacing);               % positions of all dipoles of a sphere
 % r0 = create_Spheroid(120,40, spacing);         % positions of all dipoles of a spheroid
 N = length(r0);                                  % number of all dipoles
@@ -20,7 +20,7 @@ fprintf('Number of dipole: %g\n',N);
 figure;
 scatter3(r0(:,1),r0(:,2),r0(:,3),'MarkerEdgeColor','k', 'MarkerFaceColor',[1 0.9 0]); 
 axis equal; 
-return;
+% return;
 
 
 %% Definitions of materials and the plane wave
