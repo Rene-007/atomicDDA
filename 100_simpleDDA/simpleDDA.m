@@ -20,7 +20,7 @@ fprintf('Number of dipole: %g\n',N);
 figure;
 scatter3(r0(:,1),r0(:,2),r0(:,3),'MarkerEdgeColor','k', 'MarkerFaceColor',[1 0.9 0]); 
 axis equal; 
-% return;
+return;
 
 
 %% Definitions of materials and the plane wave
