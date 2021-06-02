@@ -26,6 +26,12 @@ with __&alpha;<sub>i</sub>__ being the polarizability of the dipole. __E<sub>loc
 * More formal
     * matrix fields and so on
 
-$$
-P(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{\frac{-(x-\mu)^2}{2\sigma^2}}
-$$
+<!-- $$
+\mathbf{E} = \frac{1}{4\pi\varepsilon_0} \left\{
+    \frac{\omega^2}{c^2 r} \left( \hat{\mathbf{r}} \times \mathbf{p} \right) \times \hat{\mathbf{r}} +
+    \left( \frac{1}{r^3} - \frac{i\omega}{cr^2} \right)
+    \left( 3\hat{\mathbf{r}} \left[\hat{\mathbf{r}} \cdot \mathbf{p}\right] - \mathbf{p} \right)
+\right\} e^\frac{i\omega r}{c} e^{-i\omega t} 
+$$ --> 
+
+<div align="center"><img style="background: white;" src="..\003_media\l0Ge7dQtVw.svg"></div>
