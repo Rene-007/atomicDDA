@@ -6,7 +6,7 @@ The idea behind the the discrete dipole method is to take a volume, e.g. a 50x40
 
 <figure class="image">
     <img src="/003_media/rectangular-cuboid.jpg" alt="A 50x40x30 rectangular cuboid divided into dipoles">
-    <figcaption><i> 50x40x30 rectangular cuboid divided into dipoles</i></figcaption>
+    <figcaption><i> 50x40x30 rectangular cuboid divided into dipoles<br></i></figcaption>
 </figure>  
   
   
