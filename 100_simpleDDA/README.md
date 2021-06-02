@@ -6,7 +6,7 @@ The idea behind the the discrete dipole method is to take a volume, e.g. a 50x40
 
 <figure class="image">
     <img src="/003_media/rectangular-cuboid.jpg" alt="A 50x40x30 rectangular cuboid divided into dipoles">
-    <figcaption>A 50x40x30 rectangular cuboid divided into dipoles</figcaption>
+    <figcaption><i> 50x40x30 rectangular cuboid divided into dipoles</i></figcaption>
 </figure>
 
 Each dipole $i$ has a polarizability $\mathbf{\alpha}_i$ which is a constant, reflects the optical response of the underlying material and for the most general case of an anisotrope material actually forms a tensor $\mathbf{\hat\alpha}_i$.
