@@ -6,7 +6,7 @@ The idea behind the the discrete dipole method is to calculate the optical respo
 
 <img src="/003_media/rectangular-cuboid.jpg" alt="A 50x40x30 rectangular cuboid divided into dipoles">
 
-Each cell $i$ contains charges (e.g. free electrons in metals or valence electrons in dielectrics) that will move around slightly when an outer electric field $\mathbf{{E}}_{\textrm{app},i}$ is applied. This leads to a polarization which can be expressed in our dipole model by
+Each cell <!-- $i$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\sUC8llATVV.svg"> contains charges (e.g. free electrons in metals or valence electrons in dielectrics) that will move around slightly when an outer electric field <!-- $\mathbf{E}_{\textrm{app},i}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\BoMm4lrha6.svg"> is applied. This leads to a polarization which can be expressed in our dipole model by
 
 <!-- $$
 \mathbf{P}_{i}={\alpha}\mathbf{{E}}_{\textrm{app},i} 
@@ -14,9 +14,9 @@ $$ -->
 
 <div align="center"><img style="background: white;" src="..\003_media\7l550EKCxe.svg"></div>
 
-where $\mathbf{\alpha}$ being the polarizability of the dipole -- a material constant. (More generally the scaler $\mathbf{\alpha}$ becomes a tensor and location dependent quantity $\bar{\alpha}_i$ for anisotropic inhomogeneous materials.) 
+where <!-- $\mathbf{\alpha}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\cBuXoa3TIs.svg"> being the polarizability of the dipole -- a material constant. (More generally the scaler <!-- $\mathbf{\alpha}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\KlQJu7aeVz.svg"> becomes a tensor and location dependent quantity <!-- $\bar{\alpha}_i$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\AlyOInu0mL.svg"> for anisotropic inhomogeneous materials.) 
 
-Now, when the applied field is not static but alternating with a frequency $\omega$, such as for the case of light, each dipole also generates an electric field [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Dipole#Dipole_radiation)
+Now, when the applied field is not static but alternating with a frequency <!-- $\omega$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\dy0eTxOXn1.svg">, such as for the case of light, each dipole also generates an electric field [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Dipole#Dipole_radiation)
 
 <!-- $$
 \mathbf{E}_{\textrm{gen},i}(\mathbf{r}) = \frac{1}{4\pi\varepsilon_0} \left\{
@@ -28,9 +28,9 @@ $$ -->
 
 <div align="center"><img style="background: white;" src="..\003_media\zatc0eQ6Bc.svg"></div>
 
-with $\mathbf{\hat{r}}$ being the unit distance vector from the dipole's origin, $r$ the distance, $c$ the velocity of light and $t$ a point in time.
+with <!-- $\mathbf{\hat{r}}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\R89QpqQ5UJ.svg"> being the unit distance vector from the dipole's origin, <!-- $r$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\bC1Zxw43cV.svg"> the distance, <!-- $c$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\dx2v3eoWaA.svg"> the velocity of light and <!-- $t$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\L2DKQFtGsG.svg"> a point in time.
 
-This means, the applied outer electric field for each dipole does not only consist of the excitation field $\mathbf{{E}}_{\textrm{exci},i}$, e.g. for plane wave  $\mathbf{E}_{0} \cdot e^{-i\omega t} $, but also the generated fields of all other dipoles:
+This means, the applied outer electric field for each dipole does not only consist of the excitation field <!-- $\mathbf{{E}}_{\textrm{exci},i}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\LqM0ZF11ax.svg">, e.g. for plane wave  <!-- $\mathbf{E}_{0} \cdot e^{-i\omega t} $ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\G83ZTU4N2h.svg">, but also the generated fields of all other dipoles:
 
 <!-- $$
 \mathbf{{E}}_{\textrm{app},i} = \mathbf{{E}}_{\textrm{exci},i} + \sum _{i\neq j} \mathbf{{E}}_{\textrm{gen},j}(\mathbf{r}_j) \,.
@@ -42,7 +42,7 @@ Considering that each dipole talks to all other dipoles and the other way around
 
 ## Solving the Problem
 
-To solve the problem we reformulate it in the frequency domain, i.e. leave out the $e^{-i\omega t} $ terms and replace $\omega/c$ by the free-space wavevector $k$, as well as define $\mathbf{r}_{ij}$ as being the distance vector between the $i^{th}$ and $j^{th}$ cell. This results in a generated field of the $i^{th}$ dipole at the position of the $j^{th}$ dipole of: 
+To solve the problem we reformulate it in the frequency domain, i.e. leave out the <!-- $e^{-i\omega t} $ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\dGvvyTmTbn.svg"> terms and replace <!-- $\omega/c$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\uKytIIRT1m.svg"> by the free-space wavevector <!-- $k$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\zyAiNITSFv.svg">, as well as define <!-- $\mathbf{r}_{ij}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\ShEZ36Mh3t.svg"> as being the distance vector between the <!-- $i^{th}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\yxl9pCar6O.svg"> cell. This results in a generated field of the <!-- $i^{th}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\rtl2BCu6EG.svg"> dipole at the position of the <!-- $j^{th}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\Bodqv6puQc.svg"> dipole of: 
 
 <!-- $$
 \mathbf{E}_{\textrm{gen},ij} = \frac{1}{4\pi\varepsilon_0} \frac{e^{i k r_{ij}}}{r_{ij}} \left\{
@@ -68,7 +68,7 @@ $$ -->
 
 <div align="center"><img style="background: white;" src="..\003_media\rkdSV8ps4T.svg"></div> 
 
-As noted with the underbrace, because $\mathbf{P}_{j}$ became linearly independent and could be extrated to the right, we were able to define an interaction matrix $\mathbf{A}$. By defining a second matrix $\mathbf{B}$ with only diagonal values of $\alpha^{-1}$ we can now write down:
+As noted with the underbrace, because <!-- $\mathbf{P}_{j}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\pElt6ZhZta.svg"> became linearly independent and could be extrated to the right, we were able to define an interaction matrix <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\azPQdhk1g1.svg">. By defining a second matrix <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\9J2TDIO03N.svg"> with only diagonal values of <!-- $\alpha^{-1}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\IuvjKmSwvX.svg"> we can now write down:
 
 <!-- $$
 \mathbf{{E}}_{\textrm{app},i} -  \sum _{i\neq j} \mathbf{{E}}_{\textrm{gen},j} = \mathbf{B}_{ii} \mathbf{P}_{i} + \sum _{i\neq j} \mathbf{A}_{ij} \mathbf{P}_{j}
@@ -77,7 +77,7 @@ $$ -->
 
 <div align="center"><img style="background: white;" src="..\003_media\GQ2lPeEpTo.svg"></div>
 
-and even further combine $\mathbf{A}$ and $\mathbf{B}$ to an extented interaction matrix $\mathbf{C}$ which results in a simple form:
+and even further combine <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\g6hoF3MfXJ.svg"> and <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\GYtED7qkN1.svg"> to an extented interaction matrix <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\k3DdFIe8PY.svg"> which results in a simple form:
 <!-- $$
 \sum \mathbf{C}_{ij} \mathbf{P}_{j} = \mathbf{{E}}_{\textrm{exci},i} \, .
 $$ --> 
@@ -100,4 +100,4 @@ $$ -->
 
 <div align="center"><img style="background: white;" src="..\003_media\l3Rkqnz2wk.svg"></div>
 
-This means, only the inverse matrix of $\mathbf{C}$ needs to be calculate and multiplied with the excitation field in order to solve the problem.
+This means, only the inverse matrix of <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\PUJZU6MhJT.svg"> needs to be calculate and multiplied with the excitation field in order to solve the problem.
