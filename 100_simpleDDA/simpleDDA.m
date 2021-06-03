@@ -4,14 +4,14 @@
 clear
 addpath('../000_data');
 
-wavelengths = 400:10:700;                        % range of wavelengths Start:Step:Stop in nm
+wavelengths = 400:10:800;                        % range of wavelengths Start:Step:Stop in nm
 phi = 0/180*pi;                                  % Angle of incidence -- zero means normal incidence
 
 
 %% Definition of the particle
 spacing = 5;                                     % dipole spacing in nm
-r0 = create_Cuboid(50,40,30, spacing);           % positions of all dipoles of a cuboid
-% r0 = create_Sphere(50, spacing);               % positions of all dipoles of a sphere
+% r0 = create_Cuboid(50,40,30, spacing);           % positions of all dipoles of a cuboid
+r0 = create_Sphere(50, spacing);               % positions of all dipoles of a sphere
 % r0 = create_Spheroid(120,40, spacing);         % positions of all dipoles of a spheroid
 N = length(r0);                                  % number of all dipoles
 fprintf('Number of dipole: %g\n',N);

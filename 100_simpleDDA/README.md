@@ -45,7 +45,7 @@ Considering that each dipole talks to all other dipoles and the other way around
 
 ## Solving the Problem
 
-To solve the problem we reformulate it in the frequency domain, i.e. leave out the <!-- $e^{-i\omega t} $ --> <img style="transform: translateY(0.0em);" src="..\003_media\dGvvyTmTbn.svg"> terms and replace <!-- $\omega/c$ --> <img style="transform: translateY(0.25em);" src="..\003_media\uKytIIRT1m.svg"> by the free-space wavevector <!-- $k$ --> <img style="transform: translateY(0.0em);" src="..\003_media\zyAiNITSFv.svg">, as well as define <!-- $\mathbf{r}_{ij}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\ShEZ36Mh3t.svg"> as being the distance vector between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> cell. This results in a generated field of the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\rtl2BCu6EG.svg"> dipole at the position of the <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\Bodqv6puQc.svg"> dipole of: 
+To solve the problem we reformulate it in the frequency domain, i.e. leave out the <!-- $e^{-i\omega t} $ --> <img style="transform: translateY(0.0em);" src="..\003_media\dGvvyTmTbn.svg"> terms and replace <!-- $\omega/c$ --> <img style="transform: translateY(0.25em);" src="..\003_media\uKytIIRT1m.svg"> by the wavevector <!-- $k$ --> <img style="transform: translateY(0.0em);" src="..\003_media\zyAiNITSFv.svg">, as well as define <!-- $\mathbf{r}_{ij}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\ShEZ36Mh3t.svg"> as being the distance vector between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> cell. This results in a generated field of the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\rtl2BCu6EG.svg"> dipole at the position of the <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\Bodqv6puQc.svg"> dipole of: 
 
 <!-- $$
 \mathbf{E}_{\textrm{gen},ij} = \frac{e^{i k r_{ij}}}{r_{ij}} \left\{
@@ -125,6 +125,35 @@ C_ext               | calc extinction cross section
 
 The setting up of the matrix follows the Notation of [Schmehl et al. <img src="../003_media/External.svg" height="14">](https://www.doi.org/10.1364/JOSAA.14.003026) but in cgs units:
 
-        c     = - k^2 * exp(1i*k*r_ij)./r_ij;                  
-        beta  =  (1 -   (k*r_ij).^-2 +   1i*(k*r_ij).^-1);      
-        gamma = -(1 - 3*(k*r_ij).^-2 + 3*1i*(k*r_ij).^-1);  
+<!-- $$
+\mathbf{A}_{ij} = c_{ij} \begin{bmatrix}
+\beta_{ij} + \gamma_{ij} \hat{r}^2_{ij,x}  & \gamma_{ij} \hat{r}_{ij,x} \hat{r}_{ij,y}  & \gamma_{ij} \hat{r}_{ij,x} \hat{r}_{ij,z}  \\
+\gamma_{ij} \hat{r}_{ij,y} \hat{r}_{ij,x}  & \beta_{ij} + \gamma_{ij} \hat{r}^2_{ij,y}  & \gamma_{ij} \hat{r}_{ij,y} \hat{r}_{ij,z}  \\
+\gamma_{ij} \hat{r}_{ij,z} \hat{r}_{ij,x}  & \gamma_{ij} \hat{r}_{ij,z} \hat{r}_{ij,y}  & \beta_{ij} + \gamma_{ij} \hat{r}^2_{ij,z} 
+\end{bmatrix}
+$$ --> 
+
+<div align="center"><img src="..\003_media\Fl78iKqkxF.svg"></div>
+
+with $\mathbf{\hat{r}}_{ij}$ being the unit distance vector between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> dipole as defined above and
+
+<!-- $$
+c_{ij} = - \frac{e^{i k r_{ij}}}{r_{ij}} k^2 
+$$ --> 
+<div align="center"><img  src="..\003_media\loyhG7Xf8s.svg"></div>
+
+<!-- $$
+\beta_{ij} = \left[ 1 -  \frac{1}{k^2r_{ij}^2} + \frac{i}{kr_{ij}} \right]
+$$ --> 
+<div align="center"><img src="..\003_media\wvFcbQQ1uv.svg"></div>
+
+<!-- $$
+\gamma_{ij} = - \left[ 1 -  \frac{3}{k^2r_{ij}^2} + \frac{3i}{kr_{ij}} \right]
+$$ --> 
+<div align="center"><img src="..\003_media\jqCmCliUGz.svg"></div>
+
+with <!-- $k$ --> <img style="transform: translateY(0.0em);" src="..\003_media\zyAiNITSFv.svg"> the wavevector as well as $r_{ij}$ being the distance between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> dipole. At this point it is also worth to mention that in the code all distances are divided by the wavelength of the excitation light to obtain numerical more favourable dimensionless units.
+
+
+## Typical Results
+
