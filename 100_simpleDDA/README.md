@@ -109,7 +109,7 @@ This means, only the inverse matrix of <!-- $\mathbf{C}$ --> <img style="transfo
 
 ## The Code
 
-The Matlab code is annotated to make it easy to follow and here is a list of the files as they occurrence inside the code.
+The Matlab code is annotated to make it easier to follow and here is an overview of the files as they occurrence inside the code.
 
 Filename            | Purpose
 :-----              |:--------
@@ -135,7 +135,7 @@ $$ -->
 
 <div align="center"><img src="..\003_media\Fl78iKqkxF.svg"></div>
 
-with $\mathbf{\hat{r}}_{ij}$ being the unit distance vector between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> dipole as defined above and
+with <!-- $\mathbf{\hat{r}}_{ij}$ --> <img style="transform: translateY(0.3em)" src="..\003_media\yHRlTRR0yr.svg"> being the unit distance vector between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> dipole as defined above and
 
 <!-- $$
 c_{ij} = - \frac{e^{i k r_{ij}}}{r_{ij}} k^2 
@@ -152,7 +152,7 @@ $$ -->
 $$ --> 
 <div align="center"><img src="..\003_media\jqCmCliUGz.svg"></div>
 
-with <!-- $k$ --> <img style="transform: translateY(0.0em);" src="..\003_media\zyAiNITSFv.svg"> the wavevector as well as $r_{ij}$ being the distance between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> dipole. At this point it is also worth to mention that in the code all distances are divided by the wavelength of the excitation light to obtain numerical more favourable dimensionless units.
+with <!-- $k$ --> <img style="transform: translateY(0.0em);" src="..\003_media\zyAiNITSFv.svg"> the wavevector as well as <!-- $r_{ij}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\szCX86XvnD.svg"> being the distance between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> dipole. At this point it is also worth to mention that in the code all distances are divided by the wavelength of the excitation light to obtain numerical more favourable dimensionless units.
 
 
 ## Typical Results
