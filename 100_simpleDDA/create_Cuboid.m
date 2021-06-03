@@ -1,5 +1,5 @@
-function r = create_Cube( w, d, h, spacing)
-%% Create the coordinates of a cube for a given diameter and spacing 
+function r = create_Cuboid( w, d, h, spacing)
+%% Create the coordinates of a rectangular cuboid for a given width, depht and height as well as spacing
 %  (distance between the dipoles).
     
 r = [];

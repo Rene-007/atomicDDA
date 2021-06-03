@@ -18,17 +18,18 @@ $$ -->
 
 with  <!-- $\mathbf{\alpha}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\cBuXoa3TIs.svg"> being the polarizability of the dipole. The polarizability is a "known" material constant such that we get an easy relation between the applied field and the resulting polarization. (As a side note, for more complicated anisotropic inhomogeneous materials the scaler <!-- $\mathbf{\alpha}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\KlQJu7aeVz.svg"> becomes a tensor and location dependent quantity <!-- $\bar{\alpha}_i$ --> <img style="transform: translateY(0.15em);" src="..\003_media\AlyOInu0mL.svg"> but the basic formalism stays the same.) 
 
-Now, when we have an alternating applied field, such as it is the case for light, and assume a frequency <!-- $\omega$ --> <img style="transform: translateY(0.0em);" src="..\003_media\dy0eTxOXn1.svg">, then each dipole also generates an electric field in the form of [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Dipole#Dipole_radiation)
+Now, when we have an alternating applied field, such as it is the case for light, and assume a frequency <!-- $\omega$ --> <img style="transform: translateY(0.0em);" src="..\003_media\dy0eTxOXn1.svg">, then each dipole also generates an electric field [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Dipole#Dipole_radiation) in the form of (cgs units [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Centimetre%E2%80%93gram%E2%80%93second_system_of_units#Various_extensions_of_the_CGS_system_to_electromagnetism)):
 
 <!-- $$
-\mathbf{E}_{\textrm{gen},i}(\mathbf{r}) = \frac{1}{4\pi\varepsilon_0} \left\{
+\mathbf{E}_{\textrm{gen},i}(\mathbf{r}) = \left\{
     \frac{\omega^2}{c^2 r} \left( \mathbf{\hat{r}} \times \mathbf{P}_{i} \right) \times \mathbf{\hat{r}} +
     \left( \frac{1}{r^3} - \frac{i\omega}{cr^2} \right)
     \left( 3\mathbf{\hat{r}} \left[\mathbf{\hat{r}} \cdot \mathbf{P}_{i}\right] - \mathbf{P}_{i} \right)
 \right\} e^\frac{i\omega r}{c} e^{-i\omega t} 
 $$ --> 
 
-<div align="center"><img src="..\003_media\zatc0eQ6Bc.svg"></div>
+<div align="center"><img src="..\003_media\T4KXvt2sbr.svg"></div> 
+
 
 with <!-- $\mathbf{\hat{r}}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\R89QpqQ5UJ.svg"> being the unit distance vector from the dipole's origin, <!-- $r$ --> <img style="transform: translateY(0.0em);" src="..\003_media\bC1Zxw43cV.svg"> the distance, <!-- $c$ --> <img style="transform: translateY(0.0em);" src="..\003_media\dx2v3eoWaA.svg"> the velocity of light and <!-- $t$ --> <img style="transform: translateY(0.0em);" src="..\003_media\L2DKQFtGsG.svg"> a point in time. This express may seem to be a bit scary for some of the readers, but we will be simplifying it quite a bit further down.
 
@@ -47,20 +48,21 @@ Considering that each dipole talks to all other dipoles and the other way around
 To solve the problem we reformulate it in the frequency domain, i.e. leave out the <!-- $e^{-i\omega t} $ --> <img style="transform: translateY(0.0em);" src="..\003_media\dGvvyTmTbn.svg"> terms and replace <!-- $\omega/c$ --> <img style="transform: translateY(0.25em);" src="..\003_media\uKytIIRT1m.svg"> by the free-space wavevector <!-- $k$ --> <img style="transform: translateY(0.0em);" src="..\003_media\zyAiNITSFv.svg">, as well as define <!-- $\mathbf{r}_{ij}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\ShEZ36Mh3t.svg"> as being the distance vector between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> cell. This results in a generated field of the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\rtl2BCu6EG.svg"> dipole at the position of the <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\Bodqv6puQc.svg"> dipole of: 
 
 <!-- $$
-\mathbf{E}_{\textrm{gen},ij} = \frac{1}{4\pi\varepsilon_0} \frac{e^{i k r_{ij}}}{r_{ij}} \left\{
+\mathbf{E}_{\textrm{gen},ij} = \frac{e^{i k r_{ij}}}{r_{ij}} \left\{
     k^2 \left( \mathbf{\hat{r}}_{ij} \times \mathbf{P}_{i} \right) \times \mathbf{\hat{r}}_{ij} +
     \left( \frac{1}{r^2_{ij}} - \frac{ik}{r_{ij}} \right)
     \left( 3\mathbf{\hat{r}}_{ij} \left[\mathbf{\hat{r}}_{ij} \cdot \mathbf{P}_{i}\right] - \mathbf{P}_{i} \right)
 \right\}  
 $$ --> 
 
-<div align="center"><img src="..\003_media\fvWEcMcQ8H.svg"></div> 
+<div align="center"><img src="..\003_media\h6QigwtGsW.svg"></div> 
+
 
 This formlula can be simplified by using the Graßmann identity (bac-cab rule [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Triple_product#Vector_triple_product)) and additionally we already change the sign for more convenience further down:
 <!-- $$ 
 \mathbf{{E}}_{\textrm{gen},ij} 
-= - \underbrace{
-    \frac{k^2}{4\pi\varepsilon_0} \frac{e^{i k r_{ij}}}{r_{ij}} \left[
+= \underbrace{ -
+    \frac{e^{i k r_{ij}}}{r_{ij}} k^2 \left[
     \left( \hat{r}_{ij} \hat{r}_{ij} \right) - \mathbf{I}  +
     \left( -\frac{1}{k^2r_{ij}^2} + \frac{i}{kr_{ij}} \right)
     \left( 3\hat{r}_{ij} \hat{r}_{ij} - \mathbf{I} \right)
@@ -68,7 +70,8 @@ This formlula can be simplified by using the Graßmann identity (bac-cab rule [<
 \mathbf{P}_{j} \, .
 $$ --> 
 
-<div align="center"><img src="..\003_media\7trO95kowA.svg"></div>  
+<div align="center"><img src="..\003_media\CGY8HRM2CZ.svg"></div> 
+
 
 Due to the cross-product expansion we were able to extract <!-- $\mathbf{P}_{j}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\pElt6ZhZta.svg"> to the right and, as indicated with the underbrace, define an interaction matrix <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\azPQdhk1g1.svg">. By also defining a second matrix <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\9J2TDIO03N.svg"> with only diagonal values of <!-- $\alpha^{-1}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\IuvjKmSwvX.svg"> we can now write down:
 
@@ -78,7 +81,7 @@ $$ -->
 
 <div align="center"><img src="..\003_media\JVxPAf15Yz.svg"></div> 
 
-This can be further reduced by combining <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg"> and <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\GYtED7qkN1.svg"> to an extented interaction matrix <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\k3DdFIe8PY.svg"> which results in the simple expression:
+This can be further reduced by combining <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg"> and <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\GYtED7qkN1.svg"> to an extended interaction matrix <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\k3DdFIe8PY.svg"> which results in the simple expression:
 <!-- $$
 \sum \mathbf{C}_{ij} \mathbf{P}_{j} = \mathbf{{E}}_{\textrm{exci},i} \, .
 $$ --> 
@@ -99,10 +102,29 @@ as the solution is now obvious
 = \mathbf{C}^{-1} \mathbf{{E}}_{\textrm{exci}} \, .
 $$ --> 
 
-><div align="center"><img src="..\003_media\l3Rkqnz2wk.svg"></div>
+<div align="center"><img src="..\003_media\l3Rkqnz2wk.svg"></div>
 
 This means, only the inverse matrix of <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\PUJZU6MhJT.svg"> needs to be calculate and multiplied with the excitation field in order to solve the problem.
 
 
 ## The Code
 
+The Matlab code is annotated to make it easy to follow and here is a list of the files as they occurrence inside the code.
+
+Filename            | Purpose
+:-----              |:--------
+simpleDDA.m         | main file
+create_Cuboid.m     | geometry definition
+create_Sphere.m     | geometry definition
+create_Spheroid.m   | geometry definition
+n_Gold.m            | load optical properties of Gold (needed for <img style="transform: translateY(0.0em);" src="..\003_media\cBuXoa3TIs.svg">)
+alpha_CM.m          | calc polariability after Clausius-Mossoti
+create_C_simple.m   | setting up the extended interaction matrix <img style="transform: translateY(0.05em);" src="..\003_media\k3DdFIe8PY.svg">
+C_abs               | calc absorption cross section
+C_ext               | calc extinction cross section
+
+The setting up of the matrix follows the Notation of [Schmehl et al. <img src="../003_media/External.svg" height="14">](https://www.doi.org/10.1364/JOSAA.14.003026) but in cgs units:
+
+        c     = - k^2 * exp(1i*k*r_ij)./r_ij;                  
+        beta  =  (1 -   (k*r_ij).^-2 +   1i*(k*r_ij).^-1);      
+        gamma = -(1 - 3*(k*r_ij).^-2 + 3*1i*(k*r_ij).^-1);  

@@ -1,6 +1,6 @@
 function C = create_C_simple(k, r, alpha)
 %% Setting up the interaction matrix C
-%  Notation: Schmehl et al. JOSA C 14, 3026 (1997)
+%  Notation: Schmehl et al. JOSA C 14, 3026 (1997) but in cgs units
 %
 % k     ...vacuum k vector
 % r     ...positions of all dipoles

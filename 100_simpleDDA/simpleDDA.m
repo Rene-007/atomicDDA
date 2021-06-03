@@ -2,14 +2,15 @@
 
 %% General stuff
 clear
+addpath('../000_data');
 
-wavelengths = 400:10:800;                        % range of wavelengths Start:Step:Stop in nm
+wavelengths = 400:10:700;                        % range of wavelengths Start:Step:Stop in nm
 phi = 0/180*pi;                                  % Angle of incidence -- zero means normal incidence
 
 
 %% Definition of the particle
 spacing = 5;                                     % dipole spacing in nm
-r0 = create_Cube(50,40,30, spacing);             % positions of all dipoles of a cube
+r0 = create_Cuboid(50,40,30, spacing);           % positions of all dipoles of a cuboid
 % r0 = create_Sphere(50, spacing);               % positions of all dipoles of a sphere
 % r0 = create_Spheroid(120,40, spacing);         % positions of all dipoles of a spheroid
 N = length(r0);                                  % number of all dipoles
@@ -28,7 +29,7 @@ n_s = 1.0;                                       % refractive index of the surro
 n_m = n_Gold(wavelengths);                       % refractive index of the metal (JnC values)
 k = 2*pi*n_s;                                    % wave number
 
-E0 = [cos(phi) 0 sin(phi)];                      % amplitude of incomming plane wave
+E0 = [cos(phi) 0 sin(phi)];                         % amplitude of incomming plane wave
 kvec = k*[sin(phi) 0 -cos(phi)];                 % wave vector
 
 
@@ -77,6 +78,6 @@ fprintf('Overall required cpu time: %.1fs\n',etime(endlooptime,startlooptime));
 figure
 plot(wavelengths, C_Abs.*wavelengths.^2); hold on;
 plot(wavelengths, C_Ext.*wavelengths.^2); hold on;
-title(['Hex -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(N) ', Spacing = ' num2str(spacing,2)]);
+title(['simpleDDA -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(N) ', Spacing = ' num2str(spacing,2)]);
 legend('C_{abs}','C_{ext}','Location','northeast');
 
