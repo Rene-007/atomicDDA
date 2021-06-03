@@ -62,13 +62,13 @@ This formlula can be simplified by using the Graßmann identity (bac-cab rule [<
 = - \underbrace{
     \frac{k^2}{4\pi\varepsilon_0} \frac{e^{i k r_{ij}}}{r_{ij}} \left[
     \left( \hat{r}_{ij} \hat{r}_{ij} \right) - \mathbf{I}  +
-    \left( \frac{1}{k^2r_{ij}^2} - \frac{i}{kr_{ij}} \right)
+    \left( -\frac{1}{k^2r_{ij}^2} + \frac{i}{kr_{ij}} \right)
     \left( 3\hat{r}_{ij} \hat{r}_{ij} - \mathbf{I} \right)
     \right] }_{\large{\mathbf{A}_{ij}}}
 \mathbf{P}_{j} \, .
 $$ --> 
 
-<div align="center"><img src="..\003_media\IYUBhf7KJx.svg"></div> 
+<div align="center"><img src="..\003_media\7trO95kowA.svg"></div> 
 
 Due to the cross-product expansion we were able to extract <!-- $\mathbf{P}_{j}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\pElt6ZhZta.svg"> to the right and, as indicated with the underbrace, define an interaction matrix <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\azPQdhk1g1.svg">. By also defining a second matrix <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\9J2TDIO03N.svg"> with only diagonal values of <!-- $\alpha^{-1}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\IuvjKmSwvX.svg"> we can now write down:
 
