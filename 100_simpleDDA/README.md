@@ -8,7 +8,7 @@ In order to do so the volume of these objects are divided into equally-sized cel
 
 <img src="/003_media/rectangular-cuboid.jpg" alt="A 50x40x30 rectangular cuboid divided into dipoles">
 
-When now an outer electric field <!-- $\mathbf{E}_{\textrm{app},i}$ --> <img style="transform: translateY(0.3em); background: white;" src="..\003_media\BoMm4lrha6.svg" align=middle> is applied the charges in each cell <!-- $i$ --> <img style="transform: translateY(0.0em); background: white;" src="..\003_media\sUC8llATVV.svg"> will move around slightly and, hence, a polarization is created. The key idea of the DDA is to model this by placing a dipole in each cell as it makes it easy to assign a polarization:
+When now an outer electric field <!-- $\mathbf{E}_{\textrm{app},i}$ --> <img style="transform: translateY(0.0em); background: white;" src="..\003_media\BoMm4lrha6.svg" align=middle> is applied the charges in each cell <!-- $i$ --> <img style="transform: translateY(0.0em); background: white;" src="..\003_media\sUC8llATVV.svg"> will move around slightly and, hence, a polarization is created. The key idea of the DDA is to model this by placing a dipole in each cell as it makes it easy to assign a polarization:
 
 <!-- $$
 \mathbf{P}_{i}={\alpha}\mathbf{{E}}_{\textrm{app},i} 
