@@ -14,7 +14,7 @@ The Discrete Dipole Approximation (DDA) is a method to simulate the interaction 
 
 In order to do so the volume of these objects are divided into equally-sized cells that depending on the material (e.g. free electrons in metals or valence electrons in dielectrics)  contains charges. As an example the figure below shows such a discretization of a 50x40x30 rectangular cuboid into 693 unit cells with the center being marked with crosses.
 
-<img src="/003_media/rectangular-cuboid.jpg" alt="A 50x40x30 rectangular cuboid divided into dipoles">
+<div align="center"><img src="/003_media/rectangular-cuboid.jpg" alt="A 50x40x30 rectangular cuboid divided into dipoles"></div>
 
 When now an outer electric field <!-- $\mathbf{E}_{\textrm{app},i}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\BoMm4lrha6.svg"> is applied the charges in each cell <!-- $i$ --> <img style="transform: translateY(0.0em);" src="..\003_media\sUC8llATVV.svg"> will move around slightly and, hence, a polarization is created. The key idea of the DDA is to model this by placing a dipole in each cell as it makes it easy to assign a polarization:
 
@@ -160,19 +160,19 @@ $$ -->
 $$ --> 
 <div align="center"><img src="..\003_media\jqCmCliUGz.svg"></div>
 
-with <!-- $k$ --> <img style="transform: translateY(0.0em);" src="..\003_media\zyAiNITSFv.svg"> the wavevector as well as <!-- $r_{ij}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\szCX86XvnD.svg"> being the distance between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> dipole. At this point it is also worth to mention that in the code all distances are divided by the wavelength of the excitation light to obtain numerical more favourable dimensionless units.
+with <!-- $k$ --> <img style="transform: translateY(0.0em);" src="..\003_media\zyAiNITSFv.svg"> being the wavevector as well as <!-- $r_{ij}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\szCX86XvnD.svg"> the distance between the <!-- $i^{th}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\qRHSMhajjc.svg"> and <!-- $j^{th}$ --> <img style="transform: translateY(0.3em);" src="..\003_media\yxl9pCar6O.svg"> dipole. At this point it is also worth to mention that in the code all distances are divided by the wavelength of the excitation light to obtain numerical more favourable dimensionless units.
 
 
 ## Typical Results
 
 When using Gold as a material for the above introduced 50nm x 40nm x 30nm rectangular cuboid we can quickly solve the problem. In order to proof a successful implementation we calculate the aborption and extinction cross sections of the cuboid:
 
-<img src="/003_media/rectangular-cuboid_results.jpg" alt="Results for the 50x40x30 rectangular">
+<div align="center"><img src="/003_media/rectangular-cuboid_results.jpg" alt="Results for the 50x40x30 rectangular"></div>
 
 They look reasonable and for further shapes and dielectric surroundings they were also calculated and compared to results of full Mie and MMP calculations. 
 
 Finally, it is worth looking at the console output of the calculations:
 
-<img src="/003_media/rectangular-cuboid_timing.jpg" alt="Results for the 50x40x30 rectangular">
+<div align="center"><img src="/003_media/rectangular-cuboid_timing.jpg" alt="Results for the 50x40x30 rectangular"></div>
 
 It seems that setting up the matrix takes much longer than acually solving it...
