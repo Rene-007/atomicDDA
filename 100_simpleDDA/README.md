@@ -99,6 +99,10 @@ as the solution is now obvious
 = \mathbf{C}^{-1} \mathbf{{E}}_{\textrm{exci}} \, .
 $$ --> 
 
-<div align="center"><img src="..\003_media\l3Rkqnz2wk.svg"></div>
+><div align="center"><img src="..\003_media\l3Rkqnz2wk.svg"></div>
 
 This means, only the inverse matrix of <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\PUJZU6MhJT.svg"> needs to be calculate and multiplied with the excitation field in order to solve the problem.
+
+
+## The Code
+
