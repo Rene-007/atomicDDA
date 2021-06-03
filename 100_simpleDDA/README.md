@@ -1,4 +1,6 @@
-# 100 simple DDA
+# 100_simpleDDA
+
+Table of Contents:
   * [An Introduction to the Discrete Dipole Approximation (DDA)](#an-introduction-to-the-discrete-dipole-approximation--dda-)
   * [Solving the Problem](#solving-the-problem)
   * [The Code](#the-code)
@@ -163,3 +165,14 @@ with <!-- $k$ --> <img style="transform: translateY(0.0em);" src="..\003_media\z
 
 ## Typical Results
 
+When using Gold as a material for the above introduced 50nm x 40nm x 30nm rectangular cuboid we can quickly solve the problem. In order to proof a successful implementation we calculate the aborption and extinction cross sections of the cuboid:
+
+<img src="/003_media/rectangular-cuboid_results.jpg" alt="Results for the 50x40x30 rectangular">
+
+They look reasonable and for further shapes and dielectric surroundings they were also calculated and compared to results of full Mie and MMP calculations. 
+
+Finally, it is worth looking at the console output of the calculations:
+
+<img src="/003_media/rectangular-cuboid_timing.jpg" alt="Results for the 50x40x30 rectangular">
+
+It seems that setting up the matrix takes much longer than acually solving it...

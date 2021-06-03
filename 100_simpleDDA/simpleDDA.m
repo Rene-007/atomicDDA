@@ -10,8 +10,8 @@ phi = 0/180*pi;                                  % Angle of incidence -- zero me
 
 %% Definition of the particle
 spacing = 5;                                     % dipole spacing in nm
-% r0 = create_Cuboid(50,40,30, spacing);           % positions of all dipoles of a cuboid
-r0 = create_Sphere(50, spacing);               % positions of all dipoles of a sphere
+r0 = create_Cuboid(50,40,30, spacing);           % positions of all dipoles of a cuboid
+% r0 = create_Sphere(50, spacing);               % positions of all dipoles of a sphere
 % r0 = create_Spheroid(120,40, spacing);         % positions of all dipoles of a spheroid
 N = length(r0);                                  % number of all dipoles
 fprintf('Number of dipole: %g\n',N);
@@ -80,4 +80,6 @@ plot(wavelengths, C_Abs.*wavelengths.^2); hold on;
 plot(wavelengths, C_Ext.*wavelengths.^2); hold on;
 title(['simpleDDA -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(N) ', Spacing = ' num2str(spacing,2)]);
 legend('C_{abs}','C_{ext}','Location','northeast');
+xlabel('Wavelength (nm)')
+ylabel('Cross Section (nm^2)')
 
