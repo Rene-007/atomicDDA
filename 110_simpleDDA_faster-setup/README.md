@@ -28,12 +28,12 @@ The Basic steps for vectorizing the code are:
 * Matrix <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\GYtED7qkN1.svg"> can quickly be calculated by setting all diagonal elements to <!-- $\alpha^{-1}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\IuvjKmSwvX.svg">
 * Add <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg"> and <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\GYtED7qkN1.svg"> together to <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\k3DdFIe8PY.svg">
 
-Further optimizations are to reuse the memory of the <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\k3DdFIe8PY.svg"> array (less memory allocations) and utilize the symmetriy of each 3x3 tensor -- only 6 elements are unique.
+Further optimizations are to reuse the memory of the <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\k3DdFIe8PY.svg"> array (less memory allocations) and utilize the symmetry of each 3x3 tensor -- only 6 elements are unique.
 
 ## Results
 
-This time we simulate a Gold sphere with an diameter of 50nm and 515 dipoles. The console output is:
+This time we simulate a Gold sphere with a diameter of 50nm, 5nm spacing and 515 dipoles. The console output is:
 
 <div align="center"><img src="/003_media/sphere_timing.jpg" alt="Results for the 50x40x30 rectangular"></div>
 
-Now, it seems that the setting up is not the main issue any more and we can proceed to bigger problems.
+It seems that setting up the matrix is not the main issue any more and we can proceed to bigger problems...
