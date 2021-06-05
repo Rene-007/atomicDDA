@@ -9,7 +9,7 @@ phi = 0/180*pi;                                  % Angle of incidence -- zero me
 
 
 %% Definition of the particle
-spacing = 4;                                     % dipole spacing in nm
+spacing = 5;                                     % dipole spacing in nm
 r0 = create_Sphere(50, spacing);                 % positions of all dipoles of a sphere
 % r0 = create_Spheroid(120,40, spacing);           % positions of all dipoles of a spheroid
 N = length(r0);                                  % number of all dipoles
@@ -60,7 +60,7 @@ for i = 1:length(wavelengths)
     tic
     C = create_A(C,k,r) + diag(1./alpha);        % create interaction matrix A in a faster way by passing it by reference (hopefully!)
                                                  % seperated main diagonal in matrix B for the sake of simplicity          
-    fprintf('setting up: %.1fs -- ',toc); 
+    fprintf('setting up: %.1s -- ',toc); 
       
     %% Setting up the solver
     % set requirements for solving
@@ -68,7 +68,7 @@ for i = 1:length(wavelengths)
     relres = 0;     iter = 0;       
  
     % choose a solver
-    solver = 1; 
+    solver = 0; 
   
     %% Solve dipole moments -- solves system of linear equations A*P = Ei for P
     tic   
@@ -98,7 +98,7 @@ for i = 1:length(wavelengths)
 
     end 
     
-    fprintf('solver: %f %3u %5.1fs \n',relres ,iter, toc);
+    fprintf('solver: %f %3u %5.2fs \n',relres ,iter, toc);
     
       
     %% Calc cross sections
