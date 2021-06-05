@@ -80,6 +80,8 @@ fprintf('Overall required cpu time: %.1fs\n',etime(endlooptime,startlooptime));
 figure
 plot(wavelengths, C_Abs.*wavelengths.^2); hold on;
 plot(wavelengths, C_Ext.*wavelengths.^2); hold on;
-title(['Hex -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(N) ', Spacing = ' num2str(spacing,2)]);
+title(['simpleDDA -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(N) ', Spacing = ' num2str(spacing,2)]);
 legend('C_{abs}','C_{ext}','Location','northeast');
+xlabel('Wavelength (nm)')
+ylabel('Cross Section (nm^2)')
 
