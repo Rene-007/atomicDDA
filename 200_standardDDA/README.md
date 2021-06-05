@@ -8,7 +8,7 @@ We take again our Gold sphere with the 50-nm diameter and this time tune the dip
 
 <div align="center"><img src="/003_media/sphere-50nm_invC_Comparison.jpg" alt="Results for the 50x40x30 rectangular"></div>
 
-A notable point here is that the time for solving the problem increases by ~6x and ~250x, respectively. The reason for this very bad scaling is that inverting a matrix with _NxN_ elements scales with _O(N<sup>3</sup>)_. So, when further doubling the number of dipole (spacing 2.0&thinsp;nm) we obtain:
+A notable point here is that the time for solving the problem increases by ~6x and ~250x, respectively. The reason for this very bad scaling is that inverting a matrix with _NxN_ elements scales with _O(N<sup>3</sup>)_. So, when further doubling the number of dipole (spacing 2.0&thinsp;nm) and solving for the first wavelength we obtain:
 
     > standardDDA
     Number of dipole: 8144
@@ -29,4 +29,25 @@ we only have to invert <!-- $\mathbf{C}$ --> <img style="transform: translateY(0
 So, it is worth to look for a better overall approach.
 
 ## Solution
+
+The solution is to use iterative algorithms.  
+
+There are many different iterative solvers around. Matlab provides amongst others the Conjugate Gradients Squared (CGS) as well as the Quasi-Minimal Residual (QMR) method and we implemented the Complex Conjugate Gradient (CCG) as well as the BiConjugate Gradients (BCG) methods in several variants. The basic idea behind them is similar. 
+
+Given an equation in the form of
+    
+        A*x = b
+
+then one can define a residual
+
+        r = b - A*x
+
+Assuming norm(r)>0 (otherwise we would already have a solution), then we can
+* calculate some form of gradient inside our *N*-dimensional hyperspace, 
+* move a step downhill and 
+* calculate the residual again. 
+
+The residual should now be smaller and, hence, repeating these steps iteratively leads us to a (local) minimum. As we probably never exactly arrive there (e.g. due to the round-off errors), we can define a number of maximum iterations and/or a threshold (relaive "error") where we stop the iterations.
+
+These solvers have in general have a complexity of just *O(N²)*, which is much better than our old approach.
 

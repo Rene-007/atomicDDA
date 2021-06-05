@@ -9,7 +9,7 @@ phi = 0/180*pi;                                  % Angle of incidence -- zero me
 
 
 %% Definition of the particle
-spacing = 2;                                     % dipole spacing in nm
+spacing = 5;                                     % dipole spacing in nm
 r0 = create_Sphere(50, spacing);                 % positions of all dipoles of a sphere
 % r0 = create_Spheroid(120,40, spacing);           % positions of all dipoles of a spheroid
 N = length(r0);                                  % number of all dipoles
@@ -17,10 +17,10 @@ fprintf('Number of dipole: %g\n',N);
 
 
 %% visualization
-figure;
-scatter3(r0(:,1),r0(:,2),r0(:,3),'MarkerEdgeColor','k', 'MarkerFaceColor',[1 0.9 0]); 
-axis equal; 
-return;
+% figure;
+% scatter3(r0(:,1),r0(:,2),r0(:,3),'MarkerEdgeColor','k', 'MarkerFaceColor',[1 0.9 0]); 
+% axis equal; 
+% return;
 
 
 %% Definitions of materials and the plane wave
@@ -60,7 +60,7 @@ for i = 1:length(wavelengths)
     tic
     C = create_A(C,k,r) + diag(1./alpha);        % create interaction matrix A in a faster way by passing it by reference (hopefully!)
                                                  % seperated main diagonal in matrix B for the sake of simplicity          
-    fprintf('setting up: %.1s -- ',toc); 
+    fprintf('setting up: %.1fs -- ',toc); 
       
     %% Setting up the solver
     % set requirements for solving
@@ -68,7 +68,7 @@ for i = 1:length(wavelengths)
     relres = 0;     iter = 0;       
  
     % choose a solver
-    solver = 0; 
+    solver = 2; 
   
     %% Solve dipole moments -- solves system of linear equations A*P = Ei for P
     tic   

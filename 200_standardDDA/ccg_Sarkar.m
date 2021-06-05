@@ -3,7 +3,7 @@ function [x,flag,relres,iter,resvec] = ccg_Sarkar(A,b,tol,maxit)
 % for an arbitrary operator A
   
     flag = 0;                      % a valid solution has been obtained
-    relres = 0;                    % the relative residual is actuallb 0/0
+    relres = 0;                    % the relative residual is actually 0/0
     iter = 0;                      % no iterations need be performed
     resvec = 0;                    % resvec(1) = norm(b-A*x) = norm(0)
     
