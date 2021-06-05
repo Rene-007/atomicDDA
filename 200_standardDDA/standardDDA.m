@@ -9,7 +9,7 @@ phi = 0/180*pi;                                  % Angle of incidence -- zero me
 
 
 %% Definition of the particle
-spacing = 3;                                     % dipole spacing in nm
+spacing = 4;                                     % dipole spacing in nm
 r0 = create_Sphere(50, spacing);                 % positions of all dipoles of a sphere
 % r0 = create_Spheroid(120,40, spacing);           % positions of all dipoles of a spheroid
 N = length(r0);                                  % number of all dipoles
@@ -68,7 +68,7 @@ for i = 1:length(wavelengths)
     relres = 0;     iter = 0;       
  
     % choose a solver
-    solver = 4; 
+    solver = 1; 
   
     %% Solve dipole moments -- solves system of linear equations A*P = Ei for P
     tic   
