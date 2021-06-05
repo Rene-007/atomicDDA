@@ -8,7 +8,7 @@ In compiled and statically typed languages, such as C/C++ or Rust, the compiler 
 
 Matlab is an interpreted (nowadays a just-in-time compiled) and dynamically typed language where such optimizations are not so easily possible. So, we have to vectorize the critical code by ourselves.
 
-## Code changes
+## Code Changes
 
 The Basic steps for vectorizing the code are:
 * Calculate the <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg"> and <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\GYtED7qkN1.svg"> matrices separately 
@@ -28,7 +28,14 @@ The Basic steps for vectorizing the code are:
 * Matrix <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\GYtED7qkN1.svg"> can quickly be calculated by setting all diagonal elements to <!-- $\alpha^{-1}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\IuvjKmSwvX.svg">
 * Add <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg"> and <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\GYtED7qkN1.svg"> together to <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\k3DdFIe8PY.svg">
 
-Further optimizations are to reuse the memory of the <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\k3DdFIe8PY.svg"> array (less memory allocations) and utilize the symmetry of each 3x3 tensor -- only 6 elements are unique.
+Further optimizations are to reuse the memory of the <!-- $\mathbf{C}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\k3DdFIe8PY.svg"> array (less memory allocations) and utilize the symmetry of each 3x3 tensor -- only 6 elements are unique. 
+
+Changed Files       | Notes
+:-----              |:--------
+simpleDDA.m         | main file
+create_C_simple.m   | removed
+create_A.m          | setting up the interaction matrix <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg">
+calc_row_Aj.m       | calc a row of <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg"> up to the j<sup>th</sup> position
 
 ## Results
 
