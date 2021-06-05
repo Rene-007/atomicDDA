@@ -8,4 +8,13 @@ We take again our Gold sphere with the 50-nm diameter and this time tune the dip
 
 <div align="center"><img src="/003_media/sphere-50nm_invC_Comparison.jpg" alt="Results for the 50x40x30 rectangular"></div>
 
-The notable point here is that the time for solving the problem increases by ~6x and ~250x, respectively. The reason for this very unfavourable behaviour is that inverting a matrix with _NxN_ elements scales with _O(N<sup>3</sup>)_. 
+A notable point here is that the time for solving the problem increases by ~6x and ~250x, respectively. The reason for this very bad scaling is that inverting a matrix with _NxN_ elements scales with _O(N<sup>3</sup>)_. 
+
+    > standardDDA
+    Number of dipole: 8144
+    wav = 400nm -- setting up: 13.9s -- solver: 0.000000   0 260.5s 
+
+
+## Solution
+
+To circumvent this p

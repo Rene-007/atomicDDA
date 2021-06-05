@@ -41,6 +41,49 @@ calc_row_Aj.m       | calc a row of <!-- $\mathbf{A}$ --> <img style="transform:
 
 This time we simulate a Gold sphere with a diameter of 50&thinsp;nm, 5&thinsp;nm spacing and 515 dipoles. The console output is:
 
-<div align="center"><img src="/003_media/sphere_timing.jpg" alt="Results for the 50x40x30 rectangular"></div>
+    >> simpleDDA
+    Number of dipole: 515
+    wav = 400nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 410nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 420nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 430nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 440nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 450nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 460nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 470nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 480nm -- setting up: 0.1s -- solver:   0.2s 
+    wav = 490nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 500nm -- setting up: 0.1s -- solver:   0.2s 
+    wav = 510nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 520nm -- setting up: 0.1s -- solver:   0.2s 
+    wav = 530nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 540nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 550nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 560nm -- setting up: 0.1s -- solver:   0.2s 
+    wav = 570nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 580nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 590nm -- setting up: 0.1s -- solver:   0.2s 
+    wav = 600nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 610nm -- setting up: 0.1s -- solver:   0.2s 
+    wav = 620nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 630nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 640nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 650nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 660nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 670nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 680nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 690nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 700nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 710nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 720nm -- setting up: 0.1s -- solver:   0.2s 
+    wav = 730nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 740nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 750nm -- setting up: 0.1s -- solver:   0.2s 
+    wav = 760nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 770nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 780nm -- setting up: 0.1s -- solver:   0.1s 
+    wav = 790nm -- setting up: 0.1s -- solver:   0.2s 
+    wav = 800nm -- setting up: 0.1s -- solver:   0.1s 
+    Overall required cpu time: 10.0s
 
 It seems that setting up the matrix is not the main issue any more and we can proceed to bigger problems...
