@@ -4,12 +4,12 @@
 clear
 addpath('../000_data');
 
-wavelengths = 400:25:600;                        % range of wavelengths Start:Step:Stop in nm
+wavelengths = 400:10:800;                        % range of wavelengths Start:Step:Stop in nm
 phi = 0/180*pi;                                  % Angle of incidence -- zero means normal incidence
 
 
 %% Definition of the particle
-spacing = 4;                                     % dipole spacing in nm
+spacing = 3;                                     % dipole spacing in nm
 r0 = create_Sphere(50, spacing);                 % positions of all dipoles of a sphere
 % r0 = create_Spheroid(120,40, spacing);           % positions of all dipoles of a spheroid
 N = length(r0);                                  % number of all dipoles
@@ -68,7 +68,7 @@ for i = 1:length(wavelengths)
     relres = 0;     iter = 0;       
  
     % choose a solver
-    solver = 0; 
+    solver = 4; 
   
     %% Solve dipole moments -- solves system of linear equations A*P = Ei for P
     tic   
@@ -113,6 +113,8 @@ fprintf('Overall required cpu time: %.1fs\n',etime(endlooptime,startlooptime));
 figure
 plot(wavelengths, C_Abs.*wavelengths.^2); hold on;
 plot(wavelengths, C_Ext.*wavelengths.^2); hold on;
-title(['Hex -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(N) ', Spacing = ' num2str(spacing,2)]);
+title(['standardDDA -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(N) ', Spacing = ' num2str(spacing,2)]);
 legend('C_{abs}','C_{ext}','Location','northeast');
+xlabel('Wavelength (nm)')
+ylabel('Cross Section (nm^2)')
 

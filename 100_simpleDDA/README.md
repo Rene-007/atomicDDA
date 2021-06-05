@@ -1,6 +1,6 @@
 # 100_simpleDDA
 
-Table of Contents:
+*In this chapter we will give an introduction to the Discrete Dipole Approximation (DDA), show how to implement it in a simple way and discuss the results.*
   * [An Introduction to the Discrete Dipole Approximation (DDA)](#an-introduction-to-the-discrete-dipole-approximation--dda-)
   * [Solving the Problem](#solving-the-problem)
   * [The Code](#the-code)

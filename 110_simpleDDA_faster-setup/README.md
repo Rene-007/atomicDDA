@@ -1,6 +1,6 @@
 # 100_simpleDDA_faster-setup
 
-We found in the last section that setting up the matrix takes roughly 10x longer than actually solving it. In this section we discuss how to easily fix that.
+*We found in the last section that setting up the matrix takes roughly 10x longer than actually solving it. In this section we discuss how to easily fix that.*
 
 ## Background
 
