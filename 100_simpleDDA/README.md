@@ -14,7 +14,7 @@
 
 The Discrete Dipole Approximation (DDA) is a method to simulate the interaction of light with arbitrary shaped particles or structures. 
 
-In order to do so the volume of these objects are divided into equally-sized cells that depending on the material (e.g. free electrons in metals or valence electrons in dielectrics)  contains charges. As an example the figure below shows such a discretization of a 50x40x30 rectangular cuboid into 693 unit cells with the center being marked with crosses.
+In order to do so the volume of these objects are divided into equally-sized cells that depending on the material (e.g. free electrons in metals or valence electrons in dielectrics)  contains charges. As an example the figure below shows such a discretization of a 50x40x30&thinsp;nm<sup>3</sup> rectangular cuboid into 693 unit cells with the center being marked with crosses.
 
 <div align="center"><img src="/003_media/rectangular-cuboid.jpg" alt="A 50x40x30 rectangular cuboid divided into dipoles"></div>
 
@@ -167,7 +167,7 @@ with <!-- $k$ --> <img style="transform: translateY(0.0em);" src="..\003_media\z
 
 ## Typical Results
 
-When using Gold as a material for the above introduced 50nm x 40nm x 30nm rectangular cuboid we can quickly solve the problem. In order to proof a successful implementation we calculate the aborption and extinction cross sections of the cuboid:
+When using Gold as a material for the above introduced 50&thinsp;nm x 40&thinsp;nm x 30&thinsp;nm rectangular cuboid we can quickly solve the problem. In order to proof a successful implementation we calculate the aborption and extinction cross sections of the cuboid:
 
 <div align="center"><img src="/003_media/rectangular-cuboid_results.jpg" alt="Results for the 50x40x30 rectangular"></div>
 

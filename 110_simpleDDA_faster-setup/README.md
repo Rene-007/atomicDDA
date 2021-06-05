@@ -39,7 +39,7 @@ calc_row_Aj.m       | calc a row of <!-- $\mathbf{A}$ --> <img style="transform:
 
 ## Results
 
-This time we simulate a Gold sphere with a diameter of 50nm, 5nm spacing and 515 dipoles. The console output is:
+This time we simulate a Gold sphere with a diameter of 50&thinsp;nm, 5&thinsp;nm spacing and 515 dipoles. The console output is:
 
 <div align="center"><img src="/003_media/sphere_timing.jpg" alt="Results for the 50x40x30 rectangular"></div>
 
