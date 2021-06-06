@@ -2,7 +2,13 @@
 
 *In the last section we implemented a simple DDA and optimized the speed of setting up the matrix. In this chapter we will find its limitations and move to a more standard implementation.*
 
-## Limitations
+*Table of Contents:*
+  * [Limitations of the Current Approach](#Limitations-of-the-Current-Approach)
+  * [Iterative Algorithms](#Iterative-Algorithms)
+  * [Code Changes](#Code-Changes)
+  * [Results](#Results)
+
+## Limitations of the Current Approach
 
 We take again our Gold sphere with the 50-nm diameter and this time tune the dipole spacing. When going from the original 5&thinsp;nm spacing to 4&thinsp;nm and later 2.5&thinsp;nm the number of dipoles first roughly doubles from 515 dipoles to 1018 and than octuplicate to 4169. This improves the quality of the spectra a lot (see below) as the unphysical ripples between 600&thinsp;nm and 750&thinsp;nm disappear. (Note, the spiky shape of the peak disappears when using finer discretizations of the spectrum.)
 
@@ -102,7 +108,7 @@ bcg_Press.m         | BCG solver after Press et al. 2007
 The standardDDA.m is structured such that it easy to play around with the different solvers.
 
 
-## Evaluation
+## Results
 
 Running the above example of a Gold sphere with the 50-nm diameter, 2.5-nm spacing and 4169 dipoles using the Sarkar CCG method give the following results:
 
