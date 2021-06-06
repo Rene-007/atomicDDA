@@ -174,7 +174,7 @@ vs.
     Number of dipole: 8144
     wav = 400nm -- setting up: 13.9s -- solver: 0.000000   0 260.5s 
 
-Here even the slowest CCG wavelength at 800&thinsp;nm is faster than the inverting-the-matrix method constant 260&thinsp;s. Switching to another iterative solver can also give a little boost: The QMR solver only takes 917.9&thinsp;s and the BCG (Sarkar) 970.8&thinsp;s for the smaller example.
+Here even the slowest CCG wavelength at 800&thinsp;nm is faster than the inverting-the-matrix method constant 260&thinsp;s per step. Switching to another iterative solver can also give a little boost: For the smaller example the QMR solver only takes 917.9&thinsp;s and the BCG (Sarkar) 970.8&thinsp;s.
 
 Nevertheless, further improvements might still be handy... 
 
