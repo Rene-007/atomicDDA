@@ -86,4 +86,4 @@ This time we simulate a Gold sphere with a diameter of 50&thinsp;nm, 5&thinsp;nm
     wav = 800nm -- setting up: 0.1s -- solver:   0.1s 
     Overall required cpu time: 10.0s
 
-It seems that setting up the matrix is not the main issue any more and we can proceed to bigger problems...
+It seems that setting up the matrix is not the main issue any more and we can [proceed to bigger problems...](../200_standardDDA) 
