@@ -176,5 +176,5 @@ vs.
 
 Here even the slowest CCG wavelength at 800&thinsp;nm is faster than the inverting-the-matrix method constant 260&thinsp;s per step. Switching to another iterative solver can also give a little boost: For the smaller example the QMR solver only takes 917.9&thinsp;s and the BCG (Sarkar) 970.8&thinsp;s.
 
-Nevertheless, further improvements might still be handy... 
+Nevertheless, [further improvements](../210_standardDDA_optimized-solvers) might still be handy... 
 
