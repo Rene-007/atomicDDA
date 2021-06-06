@@ -8,7 +8,6 @@ function [x,flag,relres,iter,resvec] = ccg_Sarkar(A,b,tol,maxit)
     resvec = 0;                    % resvec(1) = norm(b-A*x) = norm(0)
     
     x = zeros(size(b,1),1);
-%     r = b;                         
     r = b - A*x;
     ATr = A'*r;
     p = ATr;

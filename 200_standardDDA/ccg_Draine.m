@@ -22,9 +22,7 @@ function [x,flag,relres,iter,resvec] = ccg_Drain(C,y,tol,maxit)
         x = x + alpha*p;
         w = w + alpha*v;
         r = y - w;
-%         r = r - alpha*v;
         g_new = z - C'*w;
-%         g_new = C'*r;
         
         beta = (g_new'*g_new) / (g'*g);
       
@@ -33,7 +31,6 @@ function [x,flag,relres,iter,resvec] = ccg_Drain(C,y,tol,maxit)
         
         iter = iter + 1;
     end
-%     alpha
     relres = (norm(r)/norm(y));
 
     

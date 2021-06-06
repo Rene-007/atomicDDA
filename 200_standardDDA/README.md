@@ -28,26 +28,65 @@ we only have to invert <!-- $\mathbf{C}$ --> <img style="transform: translateY(0
 
 So, it is worth to look for a better overall approach.
 
+
 ## Solution
 
 The solution is to use iterative algorithms.  
 
-There are many different iterative solvers around. Matlab provides amongst others the Conjugate Gradients Squared (CGS) as well as the Quasi-Minimal Residual (QMR) method and we implemented the Complex Conjugate Gradient (CCG) as well as the BiConjugate Gradients (BCG) methods in several variants. The basic idea behind them is similar. 
+There are many different iterative solvers around. Matlab provides amongst others the Conjugate Gradients Squared (CGS) as well as the Quasi-Minimal Residual (QMR) method and I implemented the Complex Conjugate Gradient (CCG) as well as the BiConjugate Gradients (BCG) methods in several variants. In detail they are all very different from each other and have their own strengths and weaknesses, but from a bird's eye view the basic idea behind them is quite similar. I will try to give a superficial explanation to grasp the principle.
 
-Given an equation in the form of
+Consider an equation of the form
     
         A*x = b
 
-then one can define a residual
+where __*A*__ is a *NxN* matrix and __*x*__ as well as __*b*__ are column vector of length *N*. Then one can define a residual
 
-        r = b - A*x
+        r = b - A*x .
 
-Assuming norm(r)>0 (otherwise we would already have a solution), then we can
-* calculate some form of gradient inside our *N*-dimensional hyperspace, 
-* move a step downhill and 
+When the norm of *r* is or becomes zero then we are at a (local) minimum and have an exact solution. If not, we try to minimize the residual to come closer to the solution. For doing that, we
+
+* calculate some "form of gradient" inside our *N*-dimensional hyperspace to find a way downhill
+* estimate a step width and move a step down towards the (local) minimum
 * calculate the residual again. 
 
-The residual should now be smaller and, hence, repeating these steps iteratively leads us to a (local) minimum. As we probably never exactly arrive there (e.g. due to the round-off errors), we can define a number of maximum iterations and/or a threshold (relaive "error") where we stop the iterations.
+The residual should now be smaller and, hence, repeating these steps iteratively leads us to a (local) minimum. As we probably never exactly arrive there (e.g. due to round-off errors), we can define a number of maximum iterations and/or a threshold (relaive "error") where we stop the iterations. Nevertheless, now we have with *x* a good approximation for the solution.
 
-These solvers have in general have a complexity of just *O(N²)*, which is much better than our old approach.
+It is worth looking into one method more in detail to better understand its computational complexity. Here we go with the CCG method after [Sarkar 1987 <img src="../003_media/External.svg" height="14">](https://www.doi.org/10.1163/156939387X00036) which uses a second, "conjugated" vector for finding a faster way downhill. But still, it is comprehensible enough to follow the computational steps:
 
+    function [x] = ccg_Sarkar(A,b,tol,maxit)
+    %% Complex Conjugate Gradient method after Sarkar 1987 for an arbitrary operator A
+    
+        % --- initialization ---
+        x = zeros(size(b,1),1);                         % solution vector      (dim: Nx1)
+        r = b - A*x;                                    % residual vector      (dim: Nx1)
+        ATr = A'*r;                                     % r buffer             (dim: Nx1)
+        p = ATr;                                        % "conjugated" vector  (dim: Nx1)
+        tolb = tol * norm(b);                           % relative tolerance   (scalar)
+        
+        % --- main loop ---
+        while iter < maxit && norm(r) > tolb
+            
+            Ap = A*p;                                   % update p buffer      (dim: Nx1)
+            alpha = (ATr'*ATr) / (Ap'*Ap);              % step width           (scalar)
+
+            x = x + alpha*p;                            % correct solution
+            r = r - alpha*Ap;                           % correct residual
+            
+            ATr_new = A'*r;                             % update r buffer
+            beta = (ATr_new'*ATr_new) / (ATr'*ATr);     % second step width    (scalar)
+        
+            p = ATr_new + beta*p;                       % correct "conjugated" vector
+
+            ATr = ATr_new;                              % copy r buffer             
+            iter = iter + 1;                            % next iteration
+        end
+                
+    end
+
+
+Within the main loop we see several vector additions, scalar products and scalar-vector multiplications which are all of the complexity *O(N)*. However, the __*A\*p*__ and __*A'\*r*__ matrix multiplications are both of the order *O(N²)* as __*A*__ is a *NxN* matrix. 
+
+This is in general the limiting factor for all iterative solvers and, hence, their complexity is __*O(N²)*__. This is in principle much better than our old approach.
+
+
+## Evaluation
