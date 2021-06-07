@@ -22,7 +22,7 @@ __II. The standard way of solving__
   * [200_standardDDA](200_standardDDA)    
     _Introduction to solvers and how to implement own ones._
   * [210_standardDDA_optimized-solvers](210_standardDDA_optimized-solvers)    
-    _A simple way for pre-conditioning the matrix._
+    _Quicker finding the solution._
 
 __III. Advanced features to drastically improve the performance__
   * [300_advancedDDA](300_advancedDDA)  
