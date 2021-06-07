@@ -73,7 +73,7 @@ Running our standard example of a Gold sphere with the 50-nm diameter, 2.5-nm sp
     wav = 800nm -- setting up: 3.1s -- solver: 0.009994 134  28.5s 
     Overall required cpu time: 766.3s
 
-One can see that for 400&thinsp;nm the result is exactly the same as in our old code but from the next wavelength on the number of iterations roughly halves and, hence, the solving time, too. The overall required cpu time is a bit longer than half of the original value due to a constant offset from the setting up time. The same is also true for QMR solver with 415.1&thinsp;s and the BCG solver with 551.9&thinsp;s.
+One can see that for 400&thinsp;nm the result is exactly the same as in our [old code](../200_standardDDA/README.md#Results) but from the next wavelength on the number of iterations roughly halves and, hence, the solving time, too. The overall required cpu time is a bit longer than half of the original value due to a constant offset from the setting up time. The same is also true for QMR solver with 415.1&thinsp;s and the BCG solver with 551.9&thinsp;s.
 
 Note, this relative speed improvement will accelarate when reducing the step size, e.g. to 5&thinsp;nm, 2&thinsp;nm or even 1&thinsp;nm. However, the overall computation time will become longer and one has to find the best trade off between speed and spectral accuracy.
 
