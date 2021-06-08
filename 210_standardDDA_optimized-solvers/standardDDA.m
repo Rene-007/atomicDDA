@@ -69,7 +69,7 @@ for i = 1:length(wavelengths)
     relres = 0;     iter = 0;       
  
     % choose a solver
-    solver = 3; 
+    solver = 2; 
   
     %% Solve dipole moments -- solves system of linear equations A*P = Ei for P
     tic   
