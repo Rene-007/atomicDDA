@@ -21,7 +21,7 @@ figure;
 % scatter3(r0(:,1),r0(:,2),r0(:,3),30*r_on+0.1,'MarkerEdgeColor','k', 'MarkerFaceColor',[1 0.9 0]); 
 % axis equal; 
 z0_plane = not(logical(r0(:,3)));
-scatter(r0(z0_plane,1),r0(z0_plane,2),90*r_on(z0_plane)+0.1,'*', 'MarkerFaceColor',[1 0.9 0]); hold on;
+scatter(r0(z0_plane,1),r0(z0_plane,2),90*r_on(true)+0.1,'*', 'MarkerFaceColor',[1 0.9 0]); hold on;
 axis equal; axis tight;
 return;
 
