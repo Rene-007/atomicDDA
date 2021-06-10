@@ -2,7 +2,11 @@
 
 *In the last section we implemented the standard DDA and optimizing the solver to improve the performance by a __factor of two__. In this chapter we utilize the symmetry of the system and hardware acceleration to improve the performance by more than __two orders of magnitude__. In this subchapter we lay the groundwork for that*
 
-
+*Table of Contents:*
+  * [A Simplified System](#A-Simplified-System)
+  * [Creating a Circulant Matrix](#Creating-a-Circulant-Matrix)
+  * [Code Changes](#Code-Changes)
+  * [Implementation](#Implementation)
 ## A Simplified System
 
 In order to better visualize symmetries and enhancements, we reduce our Gold-sphere example to 81 dipoles by increasing the spacing to 10&thinsp;nm while leaving the 50-nm diameter untouched. Furthermore, we are just considering the central plane which consist of 21 numbered dipoles as depicted below.
