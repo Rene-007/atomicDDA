@@ -41,7 +41,7 @@ Let's try to use this property.
 ## Creating a Circulant Matrix
 
 
-<!-- <div align="center"><img src="/003_media/conv_animation.gif" alt="Animation of the convolution."></div> -->
+<div align="center"><img src="/003_media/conv_animation.gif" width="58%" alt="Animation of the convolution."></div>
 
 
 <!-- $$
