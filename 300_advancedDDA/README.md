@@ -35,7 +35,7 @@ But let us not stop at this point but add further green arrows to the top, right
 
 This means, when we expand the original grid slightly, we can represent all interactions in one go. This expanded rectangular grid has to be at least *2x* maximum width times *2x* maximum heigh of the structure as well as periodically repeated, i.e. arrows which exceed the boundary of the rectangular grid to the right are simply wrapped around and re-enter from the left.
 
-We can now count all grid points starting with *-40* at the bottom left, *0* in the center and finishing with *40* at the top right. With this, we can now build a vector containing all positions, e.g. <!-- $\color{teal}{p_{0}}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\hQhUfEroSG.svg"> is the polarization of the dipole in the center, and a vector containing all interactions, e.g. <!-- $\color{purple}{a_{10}}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\6Kxxy3IMUC.svg"> is the interaction with the dipole placed on to the top-right. Here is spatial representation of the vectors:
+We can now count all grid points starting with *-40* at the bottom left, *0* in the center and finishing with *40* at the top right. Using that we can build a vector containing all positions, e.g. <!-- $\color{teal}{p_{0}}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\hQhUfEroSG.svg"> is the polarization of the dipole in the center, and a vector containing all interactions, e.g. <!-- $\color{purple}{a_{10}}$ --> <img style="transform: translateY(0.1em); background: white;" src="..\003_media\6Kxxy3IMUC.svg"> is the interaction with the dipole placed on to the top-right. Here is spatial representation of the vectors:
 
 <div align="center"><img src="/003_media/conv_numbering.jpg" alt="New numbering of the vector and interactions."></div>
 
@@ -45,7 +45,33 @@ Hence, we can write the original matrix equation down again but in this new nota
 
 Now, one can see that this matrix has a very specific symmetry: all rows have the same elements which are just circled around. Hence, it is called *circulant matrix* and one only needs to know the first row to reconstruct the whole matrix. This means, instead of *21 x 21 = 441* elements, just *40 - (-40) + 1 = 81* have to be stored for our example.
 
-*Circulant* matrices have another very nice property. But in order to stay sane we won't discuss it now and also won't implement the just mentioned matrix "compression" in this subchapter.
+*Circulant* matrices have another very important property. But in order to stay sane (remember, this example is only a 2D simplification with scalar elements), we won't discuss it now and, for the sake of simplicity, we also just save the whole matrix.
+
+
+## Code Changes
+
+As the matrix is not symmetric anymore, the BCG solver was removed.
+
+Changed Files           | Notes
+:-----                  |:--------
+advancedDDA.m           | main file
+create_Spheroid_ext.m   | create space with extended grid
+ccg_Sarkar_ext.m        | extended CCG method
+myqmr_ext.m             | extended QMR method
 
 
 ## Implementation
+
+The code -- *advancedDDA.m* -- has some subtle changes. `r0` is now a list of grid points instead of dipoles positions and `r_on` is a list of the same length whose elements are true if there is a dipole at the specific position. `R_on` is the same and just formated slightly differently. To generate the new grid space and `r_on`, the *create_Spheroid* routine was extended.
+
+With the new grid, the *create_A* function automatically creates the right matrix (with maybe some circulant shift) and only the solvers have to be adapted.
+
+There, the matrix-vector products `A*p`, `A*r` or `A*x` need to be reinterpreted. On the one hand *A* cannot be the full but only the simple interaction matrix, so `A` has to be replaced with `A + B`. When we treat the diagonal matrix *B* just as vector and use the `.*` element-wise vector multiplication, we easily save some space. Finally, after every matrix multiplication we have to apply `R_on` to zero the grid positions where no dipole exists. Hence
+
+    Cp = A*p
+
+for example becomes
+
+    Cp = R_on.*((A*p + B.*p))
+
+The runtime of code is now quite slow, as the overall grid size is *8x* larger, but we will improve on that quite a bit in [the next section](../310_advancedDDA_FFT).

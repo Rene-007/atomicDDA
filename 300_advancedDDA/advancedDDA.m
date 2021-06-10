@@ -9,7 +9,7 @@ phi = 0/180*pi;                                  % Angle of incidence -- zero me
 
 
 %% Definition of the particle
-spacing = 10;                                   % dipole spacing in nm
+spacing = 10;                                    % dipole spacing in nm
 [r0,r_on] = create_Spheroid_ext(50,50,spacing);  % create_Spheroid(long_axis, short_axis, spacing) with an extended grid
 R_on = reshape(repmat(r_on,1,3)',[],1);          % R_on ... positions where there is an active dipole
 N = length(r0);                                  % number of all dipoles
@@ -18,12 +18,9 @@ fprintf('Number of dipole: %g\n',N);
 
 %% visualization
 figure;
-% scatter3(r0(:,1),r0(:,2),r0(:,3),30*r_on+0.1,'MarkerEdgeColor','k', 'MarkerFaceColor',[1 0.9 0]); 
-% axis equal; 
-z0_plane = not(logical(r0(:,3)));
-scatter(r0(z0_plane,1),r0(z0_plane,2),90*r_on(true)+0.1,'*', 'MarkerFaceColor',[1 0.9 0]); hold on;
-axis equal; axis tight;
-return;
+scatter3(r0(:,1),r0(:,2),r0(:,3),30*r_on+0.1,'MarkerEdgeColor','k', 'MarkerFaceColor',[1 0.9 0]); 
+axis equal; 
+% return;
 
 
 %% Definitions of materials and the plane wave
@@ -72,7 +69,7 @@ for i = 1:length(wavelengths)
     relres = 0;     iter = 0;       
  
     % choose a solver
-    solver = 2; 
+    solver = 1; 
   
     %% Solve dipole moments -- solves system of linear equations A*P = Ei for P
     tic   
@@ -80,13 +77,13 @@ for i = 1:length(wavelengths)
         % iterative solutions
         % scaling: O(N^2)      
         case 1
-          % BiConjugate Gradients Method -- own implementations
-          % Unstable with P as starting value
-          [P,relres,iter] = bcg_Sarkar_cube(A, B, R_on, Ei, tol, maxit); 
-        case 2
-          % Complex Conjugate Gradient Method -- own implementations
+          % Complex Conjugate Gradient Method -- extended grid
           % Stable
-          [P,relres,iter] = ccg_Sarkar_cube(P, A, B, R_on, Ei, tol, maxit);    
+          [P,relres,iter] = ccg_Sarkar_ext(P, A, B, R_on, Ei, tol, maxit);    
+        case 2
+          % Quasi-Minimal Residual Method -- extended grid
+          % Stable
+          [P,relres,iter] = myqmr_ext(P, A, B, R_on, Ei, tol, maxit);    
 
     end 
     

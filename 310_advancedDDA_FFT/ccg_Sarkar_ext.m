@@ -1,4 +1,4 @@
-function [x,relres,iter] = ccg_Sarkar_cube(P,A,B,R_on,b,tol,maxit)
+function [x,relres,iter] = ccg_Sarkar_ext(P,A,B,R_on,b,tol,maxit)
 %% Complex Conjugate Gradient method after Sarkar 1987 
 %  for an arbitrary operator A
    

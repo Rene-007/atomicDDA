@@ -2,9 +2,17 @@ function r = create_Spheroid(long_axis,short_axis, spacing)
 %% Creating the coordinates of a sphere for a given diameter and spacing 
 %  (distance between the dipoles).
     
+    %% General parameters
+    % center of particle
+    x0 = 0;
+    y0 = 0;
+    z0 = 0;
+    
+    % radii
     r_long = long_axis /2;
     r_short = short_axis /2;
     
+    %% Calc size of the space
     % needed such that we go through zero
     l_range = 0:spacing:r_long;
     s_range = 0:spacing:r_short;
@@ -15,11 +23,8 @@ function r = create_Spheroid(long_axis,short_axis, spacing)
     N = length(l_space) * length(s_space) * length(s_space);
     fprintf('Building %gnm x %gnm Spheroid with...',2*l_space(end),2*s_space(end));
 
-    r = double(zeros(N,3));
-    x0 = 0;
-    y0 = 0;
-    z0 = 0;
-    
+    %% Create dipole positions
+    r = double(zeros(N,3));  
     i = 1;
     for z = s_space
         for y = s_space

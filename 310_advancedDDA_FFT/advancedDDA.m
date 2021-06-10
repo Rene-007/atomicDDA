@@ -76,7 +76,7 @@ for i = 1:length(wavelengths)
           fprintf('setting up: %.1fs -- ',toc);   
           tic 
           % solving the matrix
-          [P,relres,iter] = ccg_Sarkar_cube(P, A, B, R_on, Ei, tol, maxit);    
+          [P,relres,iter] = ccg_Sarkar_ext(P, A, B, R_on, Ei, tol, maxit);    
         
         % fft solutions
         % scaling: O(N*log(N))          
