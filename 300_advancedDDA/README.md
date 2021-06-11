@@ -92,7 +92,7 @@ $$ -->
 
 Now, one can see that this matrix has a very specific symmetry: all rows have the same elements which are just circled around. Hence, it is called *circulant matrix* and one only needs to know the first row to reconstruct the whole matrix. This means, instead of *21 x 21 = 441* elements, just *40 - (-40) + 1 = 81* have to be stored for our example.
 
-*Circulant* matrices have another very useful property. However, in order to stay sane (remember, this example is only a 2D simplification with scalar elements), we won't discuss it now and we also go with the whole matrix.
+*Circulant* matrices have another very useful property. However, in order to stay sane (remember, this example is only a 2D simplification with scalar elements), we won't discuss it now and also just go with the whole matrix.
 
 
 ## Code Changes
@@ -109,16 +109,21 @@ myqmr_ext.m             | extended QMR method
 
 ## Implementation
 
-The code -- *advancedDDA.m* -- has some subtle changes. `r0` is now a list of grid points instead of dipoles positions and `r_on` is a list of the same length whose elements are true if there is a dipole at the specific position. `R_on` is the same and just formated slightly differently. To generate the new grid space and `r_on`, the *create_Spheroid* routine was extended.
+The code in *advancedDDA.m* has some subtle changes: `r0` is now a list of grid points instead of dipoles positions and `r_on` is a list of the same length whose elements are true if there is a dipole at the specific grid position. `R_on` is the basically the same but tripled to reflect the three dimensions of the space. 
 
-With the new grid, the *create_A* function automatically creates the right matrix (with maybe some circulant shift) and only the solvers have to be adapted.
+The *create_Spheroid* routine was extended to generate the new grid space and `r_on`. In contrast, the *create_A* function stayed the same as it automatically creates a circulant matrix with the new grid. 
 
-There, the matrix-vector products `A*p`, `A*r` or `A*x` need to be reinterpreted. On the one hand *A* cannot be the full but only the simple interaction matrix, so `A` has to be replaced with `A + B`. When we treat the diagonal matrix *B* just as vector and use the `.*` element-wise vector multiplication, we easily save some space. Finally, after every matrix multiplication we have to apply `R_on` to zero the grid positions where no dipole exists. Hence
+The solvers had to be adapted as the matrix-vector products `A*p`, `A*r` or `A*x` needed to be reinterpreted: 
+* Firstly, as we left out the self-interaction term, *A* cannot represent the full interaction matrix anymore and, hence, `A` had to be replaced with `A + B`. 
+* Secondly, as we had to asign and hand over the diagonal matrix *B* now separately, we represented it as just a vector to save some space.
+* And finally, after every matrix-vector multiplication we had to apply `R_on` to zero the grid positions where no dipole exists. 
+
+Therefore, the following code
 
     Cp = A*p
 
-for example becomes
+for example became
 
-    Cp = R_on.*((A*p + B.*p))
+    Cp = R_on.*((A*p + B.*p)) .
 
-The runtime of code is now quite slow, as the overall grid size is *8x* larger, but we will improve on that quite a bit in [the next section](../310_advancedDDA_FFT).
+So, after doing all these changes the overall matrix size increased *8* times and, hence, the code now runs much slower. However, with the improvements in [the next section](../310_advancedDDA_FFT) the tide will turn.
