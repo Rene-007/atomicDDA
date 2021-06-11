@@ -84,7 +84,6 @@ with `Conv3D` being the convolution function.
 
 ## Code Changes
 
-
 Changed Files           | Notes
 :-----                  |:--------
 advancedDDA.m           | main file
