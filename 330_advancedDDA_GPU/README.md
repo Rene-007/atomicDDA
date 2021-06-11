@@ -6,7 +6,7 @@
 
 Utilizing the compute capabilities of GPUs is not easy. Fortunately, Matlab implemented an easy but still powerful abstraction for using it. 
 
-The main thing to do is to wrap data `x_cpu` in a data structure on the GPU via `x_gpu = gpuArray(x_cpu)`. This sends the data to the GPU and, if done for all essential data structures, the evaluation will already take place directly on the GPU. At the end, the data can be transfered back via `x_cpu = gather(x_gpu)`. But be aware, that profiling computations on the GPU using Matlab can be quite misleading as the profiler runs on the CPU.
+The main thing to do is to wrap data on the CPU, e.g. `x_cpu`, in a data structure on the GPU via `x_gpu = gpuArray(x_cpu)`. This sends the data to the GPU and, if done for all essential data structures, the evaluation will take place directly on the GPU. At the end, the results can be transfered back via `x_cpu = gather(x_gpu)`. But be aware, that profiling computations on the GPU using Matlab can be quite misleading as the profiler itself still runs on the CPU.
 
 
 ## Code Changes
