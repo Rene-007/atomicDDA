@@ -14,6 +14,7 @@ The main thing to do is to wrap data on the CPU, e.g. `x_cpu`, in a data structu
 Changed Files           | Notes
 :-----                  |:--------
 advancedDDA.m           | main file
+create_fftA_gpu.m       | build fftA using the GPU
 ccg_Sarkar_GPU.m        | CCG method using the GPU
 myqmr_GPU.m             | QMR method using the GPU
 
@@ -68,7 +69,7 @@ The results of our standard example of a Gold sphere with the 50-nm diameter, 2.
     wav = 780nm -- setting up: 0.0s -- solver: 0.009969  24   0.1s 
     wav = 790nm -- setting up: 0.0s -- solver: 0.009945  28   0.1s 
     wav = 800nm -- setting up: 0.0s -- solver: 0.009932  24   0.1s 
-    Overall required cpu time: 2.8s
+    Overall required cpu/gpu time: 2.8s
 
 
 Besides the first run being somewhat slower due to the initialization of the GPU, the results shown here are very encouraging. Switching from a AMD Ryzen 5950X CPU to a Nvidia RTX 3090 GPU resulted in nearly another *10x* speed up. But, [more improvements are yet to come.](../340_advancedDDA_GPU-optimized)
