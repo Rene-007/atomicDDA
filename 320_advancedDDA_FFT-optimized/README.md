@@ -68,4 +68,4 @@ The results of our standard example of a Gold sphere with the 50-nm diameter, 2.
     Overall required cpu time: 20.4s
 
 
-As expected, compared to the formerly 31.3&thinsp;s the code is now 33% faster. But thanks to the modern times we are living in, [there is still more to come...](../320_advancedDDA_GPU)
+As expected, compared to the formerly 31.3&thinsp;s the code is now 33% faster. But thanks to the modern times we are living in, [there is still more to come...](../330_advancedDDA_GPU)
