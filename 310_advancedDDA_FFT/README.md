@@ -2,7 +2,14 @@
 
 *In the last section we layed the ground work for a lot of memory and speed improvements. In this section we can reap the first fruit of this labour.*
 
-## Background
+*Table of Contents:*
+  * [Background on Circulant Matrices](#Background-on-Circulant-Matrices)
+  * [Implementation](#Implementation)
+  * [Code Changes](#Code-Changes)
+  * [Results](#Results)
+ 
+
+## Background on Circulant Matrices
 
 Let's start with the circulant matrix from the last section.
 
@@ -60,7 +67,20 @@ The main crux of the implementation is to get the convolution right as we are de
     e(:,2) = ifft(fft(a(:,2)) .* fft(p(:,1)) + fft(a(:,5)) .* fft(p(:,2)) + fft(a(:,6)) .* fft(p(:,3)));
     e(:,3) = ifft(fft(a(:,3)) .* fft(p(:,1)) + fft(a(:,6)) .* fft(p(:,2)) + fft(a(:,9)) .* fft(p(:,3)));
 
-with `e(:,1)`, `e(:,2)` & `e(:,3)` being the vectors of all *x*, *y* & *z* component of *e*, respectively, and `p(:,1)`, `p(:,2)` & `p(:,3)` the same for *p*. `a(:,1)` to `a(:,9)` correspond to the nine elements of the *3x3* tensor discussed [here](../100_simpleDDA#the-code).
+with `e(:,1)`, `e(:,2)` & `e(:,3)` being the vectors of all *x*, *y* & *z* component of *e*, respectively, and `p(:,1)`, `p(:,2)` & `p(:,3)` the same for *p*. `a(:,1)` to `a(:,9)` correspond to the vectors of the nine elements of the *3x3* tensor discussed [here](../100_simpleDDA#the-code).
+
+In the real code `fft(a(:,:))` is precomputed and saved as `fftA` already when `a` is build because it is constant for a given wavelength. Furthermore, some reshaping is needed to translate between the different memory layouts of the vectors.
+
+Adapting the solvers is easy as the matrix-vector multiplications such as
+
+    Ap = A*p;
+
+just need to be replaced with the corresponding convolution
+
+    Ap = Conv3D(fftA,p);
+
+with `Conv3D` being the convolution function.
+
 
 ## Code Changes
 
@@ -79,7 +99,7 @@ The advancedDDA.m is structured such that it easy to switch between the standard
 
 ## Results
 
-CCG results
+The results of our standard example of a Gold sphere with the 50-nm diameter, 2.5-nm spacing and 4169 dipoles using the Sarkar CCG method give us now: 
 
     >> advancedDDA
     Building a 50nm x 50nm spheroid with 68921 grid points and 4169 dipoles
@@ -125,3 +145,9 @@ CCG results
     wav = 790nm -- setting up: 0.0s -- solver: 0.009939  28   1.3s 
     wav = 800nm -- setting up: 0.0s -- solver: 0.009988  23   1.1s 
     Overall required cpu time: 31.3s
+
+This is a *20x* improvement from the 766.3&thinsp;s we had before! 
+
+Note, due to the much larger grid, the observed accuracy in the spectra actually got a bit worse. However, when overcompensating it by reducing the tolerance from `1e-2` to `1e-3` the requirde cpu time was with 250.7&thinsp;s still much faster. 
+
+Furthermore, in the [next section](../320_advancedDDA_FFT-optimized) we will optimize the performance for this new approach.

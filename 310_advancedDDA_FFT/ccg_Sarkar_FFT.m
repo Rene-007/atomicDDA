@@ -20,15 +20,15 @@ function [x,relres,iter] = ccg_Sarkar_FFT(P,fftA,B,R_on,b,tol,maxit)
         
         alpha = (CTr'*CTr) / (Cp'*Cp);
 
-        x = x + alpha*p;
-        r = r - alpha*Cp;
+        x = x + alpha.*p;
+        r = r - alpha.*Cp;
         
         ATr = Conv3D(conj(fftA),r);  
         CTr_new = R_on.*(ATr + conj(B).*r);
       
         beta = (CTr_new'*CTr_new) / (CTr'*CTr);
        
-        p = CTr_new + beta*p;
+        p = CTr_new + beta.*p;
         CTr = CTr_new;
          
         iter = iter + 1;
