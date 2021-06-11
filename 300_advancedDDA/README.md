@@ -1,4 +1,4 @@
-# 200_advancedDDA
+# 300_advancedDDA
 
 *In the last section we implemented the standard DDA and optimizing the solver to improve the performance by a __factor of two__. In this chapter we utilize the symmetry of the system and hardware acceleration to improve the performance by more than __two orders of magnitude__. In this subchapter we lay the groundwork for that*
 

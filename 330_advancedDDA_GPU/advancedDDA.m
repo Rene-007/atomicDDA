@@ -4,13 +4,13 @@
 clear
 addpath('../000_data');
 
-wavelengths = 400:05:700;                        % range of wavelengths Start:Step:Stop in nm
+wavelengths = 400:10:800;                        % range of wavelengths Start:Step:Stop in nm
 phi = 0/180*pi;                                  % Angle of incidence -- zero means normal incidence
 
 
 %% Definition of the particle
-spacing = 1;                                     % dipole spacing in nm
-[r0,r_on] = create_Spheroid_ext(10,10,spacing);  % create_Spheroid(long_axis, short_axis, spacing) with an extended grid
+spacing = 2.5;                                   % dipole spacing in nm
+[r0,r_on] = create_Spheroid_ext(50,50,spacing);  % create_Spheroid(long_axis, short_axis, spacing) with an extended grid
 R_on = reshape(repmat(r_on,1,3)',[],1);          % R_on ... positions where there is an active dipole
 N = length(r0);                                  % number of all dipoles
 
@@ -59,11 +59,11 @@ for i = 1:length(wavelengths)
     
     %% Setting up the solver
     % set requirements for solving
-    tol = 1e-3;     maxit = 10000;     
+    tol = 1e-2;     maxit = 10000;     
     relres = 0;     iter = 0;       
  
     % choose a solver
-    solver = 2; 
+    solver = 3; 
     
     %% Solve dipole moments
     switch solver        
@@ -123,6 +123,8 @@ fprintf('Overall required cpu time: %.1fs\n',etime(endlooptime,startlooptime));
 figure
 plot(wavelengths, C_Abs.*wavelengths.^2); hold on;
 plot(wavelengths, C_Ext.*wavelengths.^2); hold on;
-title(['Hex -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(sum(r_on)) ', Spacing = ' num2str(spacing,2)]);
+title(['advancedDDA -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(N) ', Spacing = ' num2str(spacing,2)]);
 legend('C_{abs}','C_{ext}','Location','northeast');
+xlabel('Wavelength (nm)')
+ylabel('Cross Section (nm^2)')
 

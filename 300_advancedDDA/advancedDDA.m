@@ -65,7 +65,7 @@ for i = 1:length(wavelengths)
       
     %% Setting up the solver
     % set requirements for solving
-    tol = 1e-3;     maxit = 10000;     
+    tol = 1e-2;     maxit = 10000;     
     relres = 0;     iter = 0;       
  
     % choose a solver
