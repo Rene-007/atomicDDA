@@ -63,15 +63,15 @@ with $\mathcal{F}$ being the Fast Fourier Transform (FFT) and $\mathcal{F}^{-1}$
 
 The main crux of the implementation is to get the convolution right as we are dealing with *3x3* tensors. Sticking to the above notation a simplified Matlab code would look like:
 
-    e(:,1) = ifft(fft(a(:,1)) .* fft(p(:,1)) + fft(a(:,2)) .* fft(p(:,2)) + fft(a(:,3)) .* fft(p(:,3)));
-    e(:,2) = ifft(fft(a(:,2)) .* fft(p(:,1)) + fft(a(:,5)) .* fft(p(:,2)) + fft(a(:,6)) .* fft(p(:,3)));
-    e(:,3) = ifft(fft(a(:,3)) .* fft(p(:,1)) + fft(a(:,6)) .* fft(p(:,2)) + fft(a(:,9)) .* fft(p(:,3)));
+    e(:,1) = ifft( fft(a(:,1)) .* fft(p(:,1))  +  fft(a(:,2)) .* fft(p(:,2))  +  fft(a(:,3)) .* fft(p(:,3)) );
+    e(:,2) = ifft( fft(a(:,2)) .* fft(p(:,1))  +  fft(a(:,5)) .* fft(p(:,2))  +  fft(a(:,6)) .* fft(p(:,3)) );
+    e(:,3) = ifft( fft(a(:,3)) .* fft(p(:,1))  +  fft(a(:,6)) .* fft(p(:,2))  +  fft(a(:,9)) .* fft(p(:,3)) );
 
 with `e(:,1)`, `e(:,2)` & `e(:,3)` being the vectors of all *x*, *y* & *z* component of *e*, respectively, and `p(:,1)`, `p(:,2)` & `p(:,3)` the same for *p*. `a(:,1)` to `a(:,9)` correspond to the vectors of the nine elements of the *3x3* tensor discussed [here](../100_simpleDDA#the-code).
 
-In the real code `fft(a(:,:))` is precomputed and saved as `fftA` during setting up `a`, because it is a constant vector. Furthermore, some reshaping is needed to translate between the different memory layouts of the vectors.
+In the real code some reshaping is needed to translate between the different memory layouts of the vectors. Furthermore, `fft(a(:,:))` is precomputed and saved as `fftA` during setting up `a`, because it is constant.
 
-Adapting the solvers is easy part here, as the matrix-vector multiplications such as
+Adapting the solvers is the easy part here, as the matrix-vector multiplications such as
 
     Ap = A*p;
 
