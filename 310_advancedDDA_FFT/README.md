@@ -148,6 +148,6 @@ The results of our standard example of a Gold sphere with the 50-nm diameter, 2.
 
 This is a *20x* improvement from the 766.3&thinsp;s we had before! 
 
-Note, due to the much larger grid, the observed accuracy in the spectra actually got a bit worse. However, when overcompensating it by reducing the tolerance from `1e-2` to `1e-3` the requirde cpu time was with 250.7&thinsp;s still much faster. 
+Note, due to the much larger grid, the observed accuracy in the spectra actually got a bit worse. However, when compensating it by reducing the tolerance from `1e-2` to `0.5e-2` the requirde cpu time was with 75.7&thinsp;s still *10x* faster. 
 
-Furthermore, in the [next section](../320_advancedDDA_FFT-optimized) we will optimize the performance for this new approach.
+Additionally, in the [next section](../320_advancedDDA_FFT-optimized) we will introduce further optimizations.
