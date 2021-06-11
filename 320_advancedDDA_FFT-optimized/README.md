@@ -6,7 +6,7 @@
 
 On problem with the code so far was, that the matrix <img src="..\003_media\azPQdhk1g1.svg"> was still pre-allocated even though it was not needed when selecting a FFT solver. Because it needs *NxN* memory, this restricted the maximum size of solvable problems considerable. Therefore, all non-FFT code was removed.
 
-The second optimization comes from the symmetry of the *3x3* tensor elements. As depicted [here](../100_simpleDDA#the-code), only 6 of the 9 elements are unique. Hence, by changing the layout of `a`/`fftA`, a speedup of up to 33% should be possible. 
+The second optimization comes from the symmetry of the *3x3* tensor elements. As depicted [here](../100_simpleDDA#the-code), only 6 of the 9 elements are unique. Hence, by changing the layout of `A`/`fftA`, a speedup of up to 33% should be possible. 
 
 
 ## Code Changes
