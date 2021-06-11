@@ -37,7 +37,7 @@ $$ -->
 <div align="center"><img style="background: white;" src="..\003_media\6Vc4ryt8GM.svg"></div> 
 <br/>
 
-This looks like a circular convolution and, indeed, that is one of the main properties of circulant matrices [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Circulant_matrix#Analytic_interpretation). Hence, given that <!-- $\mathbf{a}$ --> <img src="..\003_media\L1AubYq1sQ.svg"> is a row in the circulant matrix <img src="..\003_media\azPQdhk1g1.svg"> and <!-- $\mathbf{p}$ --> <img style="transform: translateY(0.1em)" src="..\003_media\rCRApphzIv.svg"> as well as <!-- $\mathbf{e}$ --> <img src="..\003_media\8lcVRpOlYT.svg"> the two vectors, then we can rewrite
+This is a circular convolution which is one of the main features of circulant matrices [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Circulant_matrix#Analytic_interpretation) and can be made very performant. Given that <!-- $\mathbf{a}$ --> <img src="..\003_media\L1AubYq1sQ.svg"> is a row in the circulant matrix <img src="..\003_media\azPQdhk1g1.svg"> and <!-- $\mathbf{p}$ --> <img style="transform: translateY(0.1em)" src="..\003_media\rCRApphzIv.svg"> as well as <!-- $\mathbf{e}$ --> <img src="..\003_media\8lcVRpOlYT.svg"> the two vectors, we can now rewrite
 
 <!-- $$
 \mathbf{e} = \mathbf{Ap}
@@ -56,7 +56,7 @@ $$ -->
 <div align="center"><img style="background: white;" src="..\003_media\7ylMMTbYrp.svg"></div>
 <br/>
 
-with $\mathcal{F}$ being the Fast Fourier Transform (FFT) and $\mathcal{F}^{-1}$ its inverse. The main advantage of utilizing the FFT is that it scales with __*O(N log(N))*__, i.e. it needs much less steps than the matrix-vector multiplication which reduces round-off error and improves the speed. 
+with $\mathcal{F}$ being the Fast Fourier Transform (FFT) and $\mathcal{F}^{-1}$ its inverse. The main advantage of utilizing the FFT is that it scales with __*O(N log(N))*__ instead of __*O(N²)*__. This means it needs much less steps than the matrix-vector multiplication and, therefore, reduces round-off error and improves speed a lot.
 
 
 ## Implementation
@@ -69,9 +69,9 @@ The main crux of the implementation is to get the convolution right as we are de
 
 with `e(:,1)`, `e(:,2)` & `e(:,3)` being the vectors of all *x*, *y* & *z* component of *e*, respectively, and `p(:,1)`, `p(:,2)` & `p(:,3)` the same for *p*. `a(:,1)` to `a(:,9)` correspond to the vectors of the nine elements of the *3x3* tensor discussed [here](../100_simpleDDA#the-code).
 
-In the real code `fft(a(:,:))` is precomputed and saved as `fftA` already when `a` is build because it is constant for a given wavelength. Furthermore, some reshaping is needed to translate between the different memory layouts of the vectors.
+In the real code `fft(a(:,:))` is precomputed and saved as `fftA` during setting up `a`, because it is a constant vector. Furthermore, some reshaping is needed to translate between the different memory layouts of the vectors.
 
-Adapting the solvers is easy as the matrix-vector multiplications such as
+Adapting the solvers is easy part here, as the matrix-vector multiplications such as
 
     Ap = A*p;
 
