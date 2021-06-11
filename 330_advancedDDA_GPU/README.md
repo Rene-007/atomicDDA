@@ -1,8 +1,29 @@
 # 330_advancedDDA_GPU
 
-~~*In the last section we implemented the standard DDA and optimizing the solver to improve the performance by a __factor of two__. In this chapter we utilize the symmetry of the system and hardware acceleration to improve the performance by more than __two orders of magnitude__. In this subchapter we lay the groundwork for that*~~
+*In the last two section we introduced and optimized the FFT/convolution in our code. Now we will utilized the power of GPUs to optain significant perfomance improvements*
 
-CCG results
+## Matlab and GPUs
+
+Utilizing the compute capabilities of GPUs is not easy. Fortunately, Matlab implemented an easy but still powerful abstraction for using it. 
+
+The main thing to do is to wrap data `x_cpu` in a data structure on the GPU via `x_gpu = gpuArray(x_cpu)`. This sends the data to the GPU and, if done for all essential data structures, the evaluation will already take place directly on the GPU. At the end, the data can be transfered back via `x_cpu = gather(x_gpu)`. But be aware, that profiling computations on the GPU using Matlab can be quite misleading as the profiler runs on the CPU.
+
+
+## Code Changes
+
+Changed Files           | Notes
+:-----                  |:--------
+advancedDDA.m           | main file
+ccg_Sarkar_GPU.m        | CCG method using the GPU
+myqmr_GPU.m             | QMR method using the GPU
+
+The advancedDDA.m is structured such that it easy to switch between the standard FFT solvers and the solvers utilizing the GPU.
+
+
+## Results
+
+
+The results of our standard example of a Gold sphere with the 50-nm diameter, 2.5-nm spacing and 4169 dipoles using the Sarkar CCG method and a NVidia RTX 3090 are:
 
     >> advancedDDA
     Building a 50nm x 50nm spheroid with 68921 grid points and 4169 dipoles
@@ -48,3 +69,6 @@ CCG results
     wav = 790nm -- setting up: 0.0s -- solver: 0.009945  28   0.1s 
     wav = 800nm -- setting up: 0.0s -- solver: 0.009932  24   0.1s 
     Overall required cpu time: 2.8s
+
+
+Besides the first run being somewhat slower due to the initialization of the GPU, the results shown here are very encouraging. Switching from a AMD Ryzen 5950X CPU to a Nvidia RTX 3090 GPU resulted in nearly another *10x* speed up. But, [more improvements are yet to come.](../340_advancedDDA_GPU-optimized)
