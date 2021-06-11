@@ -1,8 +1,26 @@
 # 320_advancedDDA_FFT-optimized
 
-~~*In the last section we implemented the standard DDA and optimizing the solver to improve the performance by a __factor of two__. In this chapter we utilize the symmetry of the system and hardware acceleration to improve the performance by more than __two orders of magnitude__. In this subchapter we lay the groundwork for that*~~
+*In the last section we introduced the FFT/convolution to our code an increased the speed a lot. In this section we implement two optimizations.*
 
-CCG results
+## Optimizations
+
+On problem with the code so far was, that the matrix <img src="..\003_media\azPQdhk1g1.svg"> was still pre-allocated even though it was not needed when selecting a FFT solver. Because it needs *NxN* memory, this restricted the maximum size of solvable problems considerable. Therefore, all non-FFT code was removed.
+
+The second optimization comes from the symmetry of the *3x3* tensor elements. As depicted [here](../100_simpleDDA#the-code), only 6 of the 9 elements are unique. Hence, by changing the layout of `a`/`fftA`, a speedup of up to 33% should be possible. 
+
+
+## Code Changes
+
+Changed Files           | Notes
+:-----                  |:--------
+advancedDDA.m           | main file
+create_fftA             | layout of A/fftA optimized
+Conv3D                  | convolution adapted to the new A/fftA layout
+
+
+## Results
+
+The results of our standard example of a Gold sphere with the 50-nm diameter, 2.5-nm spacing and 4169 dipoles using the Sarkar CCG method give: 
 
     >> advancedDDA
     Building a 50nm x 50nm spheroid with 68921 grid points and 4169 dipoles
@@ -50,3 +68,4 @@ CCG results
     Overall required cpu time: 20.4s
 
 
+As expected, compared to the formerly 31.3&thinsp;s the code is now 33% faster. But thanks to the modern times we are living in, [there is still more to come...](../320_advancedDDA_GPu)
