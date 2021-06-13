@@ -1,4 +1,4 @@
-function [r, r_on] = create_Spheroid_ext_hex(long_axis,short_axis, spacing)
+function [r, r_on] = create_Spheroid_ext_fcc(long_axis,short_axis, spacing)
 %% Creating the coordinates of a spheroid for a given diameter and spacing with an extended grid
 %  (distance between the dipoles).
     

@@ -12,8 +12,8 @@ phi = 0/180*pi;                                  % Angle of incidence -- zero me
 d_Au = 0.40782;                                  % diameter of gold atom in nm
 spacing = d_Au;
 % [r0,r_on] = create_Spheroid_ext(10,10,spacing);              % one Spheroid(long_axis, short_axis, spacing) with an extended grid
-[r0,r_on] = create_Spheroid_ext_hex(10,10,spacing);            % one Spheroid(long_axis, short_axis, spacing) in a hexagonal extended grid
-% [r0,r_on] = create_SpheroidPair_ext_hex(10,10,2, spacing);   % two Spherois(long_axis, short_axis, gap, spacing) in a hexagonal extended grid
+[r0,r_on] = create_Spheroid_ext_fcc(10,10,spacing);            % one Spheroid(long_axis, short_axis, spacing) in a fcc extended grid
+% [r0,r_on] = create_SpheroidPair_ext_fcc(10,10,2, spacing);   % two Spherois(long_axis, short_axis, gap, spacing) in a fcc extended grid
 R_on = reshape(repmat(r_on,1,3)',[],1);          % R_on ... positions where there is an active dipole
 N = length(r0);                                  % number of all dipoles
 
@@ -92,6 +92,8 @@ fprintf('Overall required cpu time: %.1fs\n',etime(endlooptime,startlooptime));
 figure
 plot(wavelengths, C_Abs.*wavelengths.^2); hold on;
 plot(wavelengths, C_Ext.*wavelengths.^2); hold on;
-title(['Hex -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(sum(r_on)) ', Spacing = ' num2str(spacing,2)]);
+title(['atomicDDA -- AOI = ' num2str(phi*180/pi) ', Dipoles = ' int2str(sum(r_on)) ', Spacing = ' num2str(spacing,2)]);
 legend('C_{abs}','C_{ext}','Location','northeast');
+xlabel('Wavelength (nm)')
+ylabel('Cross Section (nm^2)')
 
