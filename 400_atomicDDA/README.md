@@ -2,11 +2,11 @@
 
 *In the last chapter we utilized FFTs/convolutions and the GPU to improve the performance of our code by __two orders of magnitude__. Here we will use the gained speed to bring the discretization to its ultimate limit -- __the atomic scale__ -- where each dipole reprents an atom.*
 
-## A new Grid
+## A New Grid
 
 Gold usually occurs in a face-centered cubic (fcc) arrangement and has a lattice constant of 0.40782&thinsp;nm [<img src="../003_media/External.svg" height="14">](https://periodictable.com/Elements/079/data.html). 
 
-So far we used a simple-cubic packing (scp) which nicely maps to cartesian coordinates and, hence, besides a simple scaling no further transformations were needed. Now, we have to implement a proper transformation that maps from a triplet of integer points *(a,b,c)* to floating-point coordinates *(x,y,z)* of the fcc lattice:
+So far we used a simple-cubic packing (scp) which nicely maps to cartesian coordinates and, hence, besides a simple scaling no further transformations were needed. Now, we have to implement a proper transformation that maps from a triplet of integer points *(a,b,c)* to floating-point coordinates *(x,y,z)* of the fcc lattice. The transformation look like:
 
     % Constants
     sin60 = 0.86602540378;
@@ -18,7 +18,7 @@ So far we used a simple-cubic packing (scp) which nicely maps to cartesian coord
     y = 0.0*a + sin60*b + yPos*c;
     z = 0.0*a +   0.0*b + zPos*c;
 
-Together with hexagonal close-packed (hcp) the fcc lattice is the closest possible packed [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres) and  <!-- $\sqrt{2}$ --> <img style="transform: translateY(0.1em);" src="..\003_media\Y5xG26lFnO.svg"> more dense than the simple cubic packing (scp) that we used so far. Hence, we also have to increase the dipole density `rho` in our code by a factor of <img style="transform: translateY(0.1em);" src="..\003_media\Y5xG26lFnO.svg">. Furthermore, we have to change the dipole spacing to *d_Au =  0.40782&thinsp;nm*.
+The fcc and the hexagonal close-packed (hcp) lattices have the closest possible packing [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres) and are <!-- $\sqrt{2}$ --> <img style="transform: translateY(0.1em);" src="..\003_media\Y5xG26lFnO.svg"> more dense than the simple cubic packing (scp) that we have used so far. Hence, we have to increase the in teh code used dipole density `rho` by a factor of <img style="transform: translateY(0.1em);" src="..\003_media\Y5xG26lFnO.svg"> to account for that. Furthermore, the spacing between the dipoles has to be set to  `spacing = d_Au =  0.40782&thinsp;nm`.
 
 
 ## Code Changes
