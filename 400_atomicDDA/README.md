@@ -103,4 +103,4 @@ For a Gold sphere with a diameter of 10&thinsp;nm this results in 10889 atoms an
 <div align="center"><img src="../003_media/sphere-10nm-atomic_final.jpg" alt="Geometry and spectra of an atomic 10nm Gold sphere"></div>
 <br/>
 
-Which looks aready quite good. Nevertheless, in the [next section](../400_atomicDDA_lattices) we will make everything a bit nicer.
+Which looks aready quite good. Nevertheless, in the [next section](../410_atomicDDA_lattices) we will make everything a bit nicer.

@@ -1,5 +1,5 @@
 function geo = Geo_Ellipsoid(r0,l_x,l_y,l_z)
-%%  Definition of a spheroid
+%%  Definition of a ellipsoid
 %   r0      ... center of the spheroid
 %   l_x/y/z ... length x/y/z axis 
 

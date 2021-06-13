@@ -19,7 +19,7 @@ lattice = Lattice_FCC(spacing);                  % face centered cubic packing
 
 % geometry = Geo_Ellipsoid([0 0 0], 1,1,1);      % Parameters (center, l_x, l_y, l_z)
 % geometry = Geo_Spheroid([0 0 0], 10,5);        % Parameters (center, long_axis, short_axis)
-geometry = Geo_SpheroidPair([0 0 0], 20,10,2);    % Parameters (center, long_axis, short_axis, gap)
+geometry = Geo_SpheroidPair([0 0 0], 20,10,2);   % Parameters (center, long_axis, short_axis, gap)
 
 % r0 are the positions of all grid poisitions, r_on the list of dipoles
 [r0,r_on] = create_Space(geometry, lattice);                 
@@ -33,7 +33,7 @@ figure;
 % scatter3(r0(:,1),r0(:,2),r0(:,3),30*r_on+0.1,'MarkerEdgeColor','k', 'MarkerFaceColor',[1 0.9 0]); 
 scatter3(r0(r_on,1),r0(r_on,2),r0(r_on,3),30,'MarkerEdgeColor','k', 'MarkerFaceColor',[1 0.9 0]); 
 axis equal; 
-return;
+% return;
 
 
 %% Definitions of materials and the plane wave
