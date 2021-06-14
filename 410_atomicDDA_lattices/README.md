@@ -47,7 +47,8 @@ draw_field              | calculates the E field on a grid
 A pair of Gold spheroids with a long axis of 20&thinsp;nm, a short axis of 10&thinsp;nm and a gap of 2&thinsp;nm results in 43618 atoms and:
 
     >> atomicDDA
-    Building a spheroid pair with a size of 36.3nm x 9.9nm x 10.0nm consisting of 631071 grid points and 43618 dipoles within 2.1s.
+    Building a spheroid pair with a size of 36.3nm x 9.9nm x 10.0nm consisting of 631071 
+    grid points and 43618 dipoles within 2.1s.
     wav = 400nm -- setting up: 0.0s -- solver: 0.000763  10   0.1s 
     wav = 405nm -- setting up: 0.0s -- solver: 0.000958   3   0.0s 
     wav = 410nm -- setting up: 0.0s -- solver: 0.000922   3   0.0s 
@@ -115,4 +116,4 @@ A pair of Gold spheroids with a long axis of 20&thinsp;nm, a short axis of 10&th
 <div align="center"><img src="../003_media/pair_final.jpg" alt="Geometry and spectra and field plot of spheroid pair"></div>
 <br/>
 
-This looks now very nice. In the [next section](../420_atomicDDA_stacking_faults) we will introduce lattices with stacking faults.
+This looks now very nice. In the [next section](../420_atomicDDA_stacking-faults) we will introduce lattices with stacking faults.

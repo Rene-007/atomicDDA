@@ -72,7 +72,8 @@ fill_Space              | updated with stacking faults -- fast version
 A pair of Gold spheroids with [-3,4] stacking, a long axis of 20 nm, a short axis of 10 nm and a gap of 2 nm results in 43618 atoms and:
 
     >> atomicDDA
-    Building a spheroid pair with a size of 41.6nm x 9.9nm x 10.0nm consisting of 2386503 grid points and 43602 dipoles within 0.1s.
+    Building a spheroid pair with a size of 41.6nm x 9.9nm x 10.0nm consisting of 2386503 
+    grid points and 43602 dipoles within 0.1s.
     wav = 400nm -- setting up: 0.0s -- solver: 0.000679   9   0.2s 
     wav = 405nm -- setting up: 0.0s -- solver: 0.000961   2   0.1s 
     wav = 410nm -- setting up: 0.0s -- solver: 0.000596   3   0.1s 
