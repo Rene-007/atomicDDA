@@ -43,6 +43,6 @@ c_space = v*lim_abc(5)-1:v*lim_abc(6)+1;
 tic    
 [r, r_on, r_surf] = fill_FlakeSpace(flake, lattice, a_space, b_space, c_space);
 
-fprintf('\b\b\b consisting of %d dipoles and %d atoms within %.3fs.\n', length(r_on),sum(r_on),toc);
+fprintf('\b\b\b consisting of %d grid points and %d atoms within %.3fs.\n', length(r_on),sum(r_on),toc);
 
 end

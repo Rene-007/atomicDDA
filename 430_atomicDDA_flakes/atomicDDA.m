@@ -5,7 +5,7 @@ clear
 gpu = gpuDevice; reset(gpu);
 addpath('../000_data');
 
-wavelengths = 400:05:700;                        % range of wavelengths Start:Step:Stop in nm
+wavelengths = 400:05:900;                        % range of wavelengths Start:Step:Stop in nm
 phi = 0/180*pi;                                  % Angle of incidence -- zero means normal incidence
 
 
@@ -15,9 +15,9 @@ phi = 0/180*pi;                                  % Angle of incidence -- zero me
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "sphere_2334.csv" );
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "monomer_22713.csv" );
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "monomer_1000000.csv" );
-[r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_48413.csv" );
+% [r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_48413.csv" );
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_750000.csv" );
-% [r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_1000000.csv" );
+[r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_1000000.csv" );
 
 
 %% Visualization
@@ -105,9 +105,11 @@ end
 figure
 plot(wavelengths, C_Abs.*wavelengths.^2); hold on;
 plot(wavelengths, C_Ext.*wavelengths.^2); hold on;
-title(['Hex-FFT -- AOI = ' num2str(phi*180/pi) ', Grid Points = ' int2str(N), ', Atoms = ' int2str(sum(r_on)) ]);
+title(['atomicDDA -- AOI = ' num2str(phi*180/pi) ', Grid Points = ' int2str(N), ', Atoms = ' int2str(sum(r_on)) ]);
 legend('C_{abs}','C_{ext}','Location','northeast');
 % legend('C_{ext}','Location','northeast');
+xlabel('Wavelength (nm)')
+ylabel('Cross Section (nm^2)')
 
 return;
 

@@ -1,4 +1,4 @@
-function stacking = flake_stacking(flake)
+function stacking = Stacking_Flake(flake)
 %%  Definition of the stacking
 
     % define the middle

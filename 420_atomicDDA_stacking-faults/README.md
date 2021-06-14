@@ -141,7 +141,7 @@ A pair of Gold spheroids with [-3,4] stacking, a long axis of 20 nm, a short a
 Note, by switching from the pure fcc to the abc lattice we went from 631.071 to 2.386.503 grid points and 10.4&thinsp;s to 28.3&thinsp;s but the number of atoms stayed more or less constant 43618 -> 43602.
 
 <br/>
-<div align="center"><img src="../003_media/pair-stacked_final.jpg" alt="Geometry and spectra and field plot of spheroid pair"></div>
+<div align="center"><img src="../003_media/pair-stacked_final.jpg" alt="Geometry and spectra and field plot of a stacked spheroid pair"></div>
 <br/>
 
 As expected, even though the stacking is different, the spectra and field distribution did not change much. In the [next section](../430_atomicDDA_flakes) we will import Gold flakes and structures thereof. 

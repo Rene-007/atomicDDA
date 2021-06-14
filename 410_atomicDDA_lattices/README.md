@@ -113,7 +113,7 @@ A pair of Gold spheroids with a long axis of 20&thinsp;nm, a short axis of 10&th
     Overall required cpu time: 10.4s
 
 <br/>
-<div align="center"><img src="../003_media/pair_final.jpg" alt="Geometry and spectra and field plot of spheroid pair"></div>
+<div align="center"><img src="../003_media/pair_final.jpg" alt="Geometry and spectra and field plot of a spheroid pair"></div>
 <br/>
 
 This looks now very nice. In the [next section](../420_atomicDDA_stacking-faults) we will introduce lattices with stacking faults.
