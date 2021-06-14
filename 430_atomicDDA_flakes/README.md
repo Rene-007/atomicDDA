@@ -146,9 +146,9 @@ For an imported regrowon gold dimer consisting of 1.000.000 atoms the calculatio
     Overall required cpu time: 1620.1s
 
 
-So, this took just 27&thinsp;min for 101 wavelengths and a dimer size which should be preciesely manufacturable with a combination of top-down and bottom-up methods!
+This took just 27&thinsp;min for 101 wavelengths and a dimer size which should be possible to preciesely manufacturable with a combination of top-down and bottom-up methods! So, controlling electric field on the atomic scale seems to be in reach.
 
-The resulting spectra and near-field distributions are plotted below.
+Resulting spectra and near-field distributions are plotted below.
 
 <br/>
 <div align="center"><img src="../003_media/regrown-dimer_1-000-000-atoms_final.jpg" alt="Geometry and spectra and field plot of a regrown dimer"></div>
