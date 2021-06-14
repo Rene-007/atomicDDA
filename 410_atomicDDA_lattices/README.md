@@ -1,4 +1,4 @@
-# 400_atomicDDA_lattices
+# 410_atomicDDA_lattices
 
 *In the last section we introduced the fcc lattice by implementing it for each geometry. Here, we will provide a better abstraction and also show the first field maps.*
 
@@ -44,7 +44,7 @@ draw_field              | calculates the E field on a grid
 
 ## Results
 
-For a pair of Gold spheroids with a long axis of 20&thinsp;nm, a short axis of 10&thinsp;nm and a gap of 2&thinsp;nm results in 43618 atoms and:
+A pair of Gold spheroids with a long axis of 20&thinsp;nm, a short axis of 10&thinsp;nm and a gap of 2&thinsp;nm results in 43618 atoms and:
 
     >> atomicDDA
     Building a spheroid pair with a size of 36.3nm x 9.9nm x 10.0nm consisting of 631071 grid points and 43618 dipoles within 2.1s.

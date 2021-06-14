@@ -25,7 +25,7 @@ lattice = Lattice_ABC_Dir_Y(spacing,stacking);   % standard lattice for flakes
 
 % geometry = Geo_Ellipsoid([0 0 0], 5,5,5);      % Parameters (center, l_x, l_y, l_z)
 % geometry = Geo_Spheroid([0 0 0], 10,5);        % Parameters (center, long_axis, short_axis)
-geometry = Geo_SpheroidPair([0 0 0], 30,15,2);   % Parameters (center, long_axis, short_axis, gap)
+geometry = Geo_SpheroidPair([0 0 0], 20,10,2);   % Parameters (center, long_axis, short_axis, gap)
 
 % r0 are the positions of all grid poisitions, r_on the list of dipoles
 [r0,r_on] = create_Space(geometry, lattice);                 
@@ -113,9 +113,11 @@ end
 figure
 plot(wavelengths, C_Abs.*wavelengths.^2); hold on;
 plot(wavelengths, C_Ext.*wavelengths.^2); hold on;
-title(['Hex-FFT -- AOI = ' num2str(phi*180/pi) ', Grid Points = ' int2str(N), ', Atoms = ' int2str(sum(r_on)) ', Raster = ' num2str(spacing,2)]);
+title(['atomicDDA  -- AOI = ' num2str(phi*180/pi) ', Grid Points = ' int2str(N), ', Atoms = ' int2str(sum(r_on)) ', Raster = ' num2str(spacing,2)]);
 legend('C_{abs}','C_{ext}','Location','northeast');
 % legend('C_{ext}','Location','northeast');
+xlabel('Wavelength (nm)')
+ylabel('Cross Section (nm^2)')
 
 return;
 
