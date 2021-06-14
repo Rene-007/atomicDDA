@@ -69,7 +69,7 @@ fill_Space              | updated with stacking faults -- fast version
 
 ## Results
 
-A pair of Gold spheroids with [-3,4] stacking, a long axis of 20 nm, a short axis of 10 nm and a gap of 2 nm results in 43618 atoms and:
+A pair of Gold spheroids with [-3,4] stacking, a long axis of 20 nm, a short axis of 10 nm and a gap of 2 nm results in 43602 atoms and:
 
     >> atomicDDA
     Building a spheroid pair with a size of 41.6nm x 9.9nm x 10.0nm consisting of 2386503 
