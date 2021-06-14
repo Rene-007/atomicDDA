@@ -144,4 +144,4 @@ Note, by switching from the pure fcc to the abc lattice we went from 631.071 to 
 <div align="center"><img src="../003_media/pair-stacked_final.jpg" alt="Geometry and spectra and field plot of spheroid pair"></div>
 <br/>
 
-As expected, the spectra and field distribution did not change much. In the [next section](../430_atomicDDA_flakes) we will import Gold flakes and structures thereof. 
+As expected, even though the stacking is different, the spectra and field distribution did not change much. In the [next section](../430_atomicDDA_flakes) we will import Gold flakes and structures thereof. 
