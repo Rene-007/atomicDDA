@@ -119,7 +119,7 @@ This means, only the inverse matrix of <!-- $\mathbf{C}$ --> <img style="transfo
 
 ## The Code
 
-The Matlab code is annotated to make it easier to follow and here is an overview of the files as they occurrence inside the code.
+The Matlab code is annotated to make it easier to follow and here is an overview of the files as they occur inside the code.
 
 Filename            | Purpose
 :-----              |:--------
@@ -171,7 +171,7 @@ When using Gold as a material for the above introduced 50&thinsp;nm x 40&thinsp;
 
 <div align="center"><img src="/003_media/rectangular-cuboid_results.jpg" alt="Results for the 50x40x30 rectangular"></div>
 
-They look reasonable and for further shapes and dielectric surroundings they were also calculated and compared to results of full Mie and MMP calculations. 
+The spectra look reasonable and the code was cross-checked by calculating further shapes & dielectric surroundings and comparing the results to of full Mie and MMP calculations. 
 
 Finally, it is worth looking at the console output of the calculations:
 
