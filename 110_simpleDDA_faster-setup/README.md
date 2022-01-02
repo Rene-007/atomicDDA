@@ -4,18 +4,18 @@
 
 ## Background
 
-In compiled and statically typed languages, such as C/C++ or Rust, the compiler has a lot of time and knowledge to analyze the code and e.g. unroll loops to better utitilize the vector instructions of modern cpus (x64: MMX, SSE, AVX; arm: Neon, SVE) which is called autovectorization. By doing this, it can also improve data locality, i.e. needed values can be better prefetched into caches such that the cpu does not has to wait for the data to arrive.
+In compiled and statically typed languages, such as C/C++ or Rust, the compiler has a lot of time and knowledge to analyze the code and e.g. unroll loops to better utitilize the vector instructions of modern CPUs (x64: MMX, SSE, AVX; arm: Neon, SVE) which is called autovectorization. By doing this, data locality can also be improved, i.e. needed values can be better prefetched into caches such that the CPU does not have to wait for the data to arrive.
 
-Matlab is an interpreted (nowadays a just-in-time compiled) and dynamically typed language where such optimizations are not so easily possible. So, we have to vectorize the critical code by ourselves.
+As Matlab is an interpreted (nowadays a just-in-time compiled) and dynamically typed language, such automatic optimizations are not so easily possible. So, we have to manually vectorize the critical code by ourselves.
 
 ## Code Changes
 
-The Basic steps for vectorizing the code are:
+The Basic steps for vectorizing our matrix-setup code are:
 * Calculate the <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg"> and <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\GYtED7qkN1.svg"> matrices separately 
 
 * For matrix <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg"> we:
     * only consider the lower left triangle,
-    * divide it into rows that spans from the first position up to the diagonal  
+    * divide it into rows that span from the first position up to the diagonal  
       (be aware: each element of the row vector is still a 3x3 tensor),
     * iterate over all rows and calculate the whole row at once by
         * building a vector of distance vectors between the current element and all others  
