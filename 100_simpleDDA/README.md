@@ -220,4 +220,4 @@ Finally, it is worth looking at the console output of the calculations:
     wav = 800nm -- setting up: 1.0s -- solver:   0.1s 
     Overall required cpu time: 45.7s
 
-[It would be nice if setting up the matrix does not take much longer than acually solving it...](../110_simpleDDA_faster-setup) 
+The runtime for this simple problem is quite fast, [but it would be nice if setting up the matrix does not take much longer than acually solving it...](../110_simpleDDA_faster-setup) 
