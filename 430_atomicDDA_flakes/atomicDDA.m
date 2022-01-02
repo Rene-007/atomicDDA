@@ -15,9 +15,9 @@ phi = 0/180*pi;                                  % Angle of incidence -- zero me
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "sphere_2334.csv" );
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "monomer_22713.csv" );
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "monomer_1000000.csv" );
-% [r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_48413.csv" );
+[r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_48413.csv" );
 % [r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_750000.csv" );
-[r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_1000000.csv" );
+% [r0,r_on,r_surf,lattice] = create_FlakeSpace( "dimer_1000000.csv" );
 
 
 %% Visualization
