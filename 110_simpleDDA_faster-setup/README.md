@@ -10,7 +10,7 @@ As Matlab is an interpreted (nowadays a just-in-time compiled) and dynamically t
 
 ## Code Changes
 
-The Basic steps for vectorizing our matrix-setup code are:
+The basic steps for vectorizing our matrix-setup code are:
 * Calculate the <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg"> and <!-- $\mathbf{B}$ --> <img style="transform: translateY(0.05em);" src="..\003_media\GYtED7qkN1.svg"> matrices separately 
 
 * For matrix <!-- $\mathbf{A}$ --> <img style="transform: translateY(0.0em);" src="..\003_media\g6hoF3MfXJ.svg"> we:
