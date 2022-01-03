@@ -4,11 +4,11 @@
 
 ## Background and Implementation
 
-One big bottleneck when working with GPUs is the data transfer from the CPU to the GPU and back. One can optimize it, but it is best to just avoid it. So, instead of creating the `fftA` on the GPU, gathering it with the CPU and then directly send it to the GPU again, it might be better to just leave it on the GPU. In Matlab this is not straight forward as it does not support memory management via references. But a suitable way to achieve it is by allocating the memory for `fftA` already in the *main program* and then pass `fftA` to the `create_fftA_gpu.m` function and return it back. This seems to work.
+One big bottleneck when working with GPUs is the data transfer from the CPU to the GPU and back. One can optimize it, but it is best to just avoid it. So, instead of creating the `fftA` on the GPU, gathering it with the CPU and then directly send it to the GPU again, it might be better to just leave it on the GPU. In Matlab this is not straight forward as it does not support memory management via references. But a suitable way to achieve it is by allocating the memory for `fftA` already in the *main program* and then pass `fftA` to the `create_fftA_gpu.m` function and return it back. At least this seems to work.
 
-Another point, that is good to know, is that GPUs are optimized for single-precision floating point operations or short `f32` operations. However, Matlab uses by default `f64` double-precision floating point values which is a sensible choice for numerical computations as it reduces the impact of round-off errors. I think, everybody can see the mismatch here. Fortunately, probably due to robustness of the FFT algorithm, `f32` values seems to be good enough for our problem. Hence, the `single` keyword was applied to all data structures.
+Another point, that is good to know, is that GPUs are optimized for single-precision floating point operations or short `f32` operations. However, Matlab uses by default `f64` double-precision floating point values which is a sensible choice for numerical computations as it reduces the impact of round-off errors. However, probably due to robustness of the FFT algorithm, `f32` values seems to be good enough for our problem. Hence, the `single` keyword was applied to all data structures to force Matlab to use `f32` values.
 
-Finally, the CCG solver was removed, as the QMR is just faster.
+Finally, as QMR is just faster the CCG solver was removed to clean up the code.
 
 
 ## Code Changes
@@ -74,7 +74,7 @@ The results of our standard example of a Gold sphere with the 50-nm diameter, 2.
 This is a *2.5x* improvement compared to the 2.8&thinsp;s achived in the last section and around *1250x* faster than the inital standardDDA which resulted in 22&thinsp;min and 31.6&thinsp;s (1351.6&thinsp;s). This is a big difference.
 
 
-To show the capabalities of the FFT-GPU combination, we decrease the spacing as well as the pitch to 1&thinsp;nm (*15.625x* more dipole and *10x* more wavelengths) and reduce the tolerance from `1e-2` to `1e-3`. The results are presented below:
+To show the capabalities of the FFT-GPU combination, we decrease the spacing as well as the pitch to 1&thinsp;nm (*15.625x* more dipoles and *10x* more wavelengths) and reduce the tolerance from `1e-2` to `1e-3`. The results are presented below:
 
     >> advancedDDA
     Building a 50nm x 50nm spheroid with 1030301 grid points and 65267 dipoles
@@ -109,4 +109,4 @@ To show the capabalities of the FFT-GPU combination, we decrease the spacing as 
 <div align="center"><img src="../003_media/sphere-50nm-01-0nm_final.jpg" alt="Geometry and spectra of the final 50nm sphere"></div>
 <br/>
 
-and even though the problem increased a lot in complexity, the computation time is still more than accaptable. So, the results are now good enough to go [atomic.](../400_atomicDDA)
+Even though the problem increased a lot in complexity, the computation time is still more than accaptable and the spectra are super smooth. So, these results are now good enough to finally go [atomic.](../400_atomicDDA)
