@@ -1,12 +1,12 @@
 # 320_advancedDDA_FFT-optimized
 
-*In the last section we introduced the FFT/convolution to our code an increased the speed a lot. In this section we implement two optimizations.*
+*In the last section we introduced the FFT/convolution to our code which increased the speed a lot. In this section we will implement two further optimizations.*
 
 ## Optimizations
 
-On problem with the code so far was, that the matrix <img src="..\003_media\azPQdhk1g1.svg"> was still pre-allocated even though it was not needed when selecting a FFT solver. Because it needs *NxN* memory, this restricted the maximum size of solvable problems considerable. Therefore, all non-FFT code was removed.
+On problem with the code so far was, that the matrix <img src="..\003_media\azPQdhk1g1.svg"> was still pre-allocated even though it was not needed when selecting a FFT solver. Because it requires *NxN* memory, this restricted the maximum size of solvable problems considerable. Therefore, all non-FFT code was removed to allow solving larger problems.
 
-The second optimization comes from the symmetry of the *3x3* tensor elements. As depicted [here](../100_simpleDDA#the-code), only 6 of the 9 elements are unique. Hence, by changing the layout of `A`/`fftA`, a speedup of up to 33% should be possible. 
+The second optimization comes from the symmetry of the *3x3* tensor elements. As depicted [here](../100_simpleDDA#the-code), only 6 of the 9 elements are unique. Hence, by changing the layout of `A`/`fftA` and adapting the convolution function, a speedup of up to 33% should be possible. 
 
 
 ## Code Changes
@@ -68,4 +68,4 @@ The results of our standard example of a Gold sphere with the 50-nm diameter, 2.
     Overall required cpu time: 20.4s
 
 
-As expected, compared to the formerly 31.3&thinsp;s the code is now 33% faster. But thanks to the modern times we are living in, [there is still more to come...](../330_advancedDDA_GPU)
+As expected, compared to the formerly 31.3&thinsp;s the code is now 33% faster. But thanks to the modern times we are living in, [there is still much more to come...](../330_advancedDDA_GPU)
