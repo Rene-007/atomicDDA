@@ -37,7 +37,7 @@ $$ -->
 <div align="center"><img style="background: white;" src="..\003_media\6Vc4ryt8GM.svg"></div> 
 <br/>
 
-This is a circular convolution which is one of the main features of circulant matrices [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Circulant_matrix#Analytic_interpretation) and can be made very performant. Given that <!-- $\mathbf{a}$ --> <img src="..\003_media\L1AubYq1sQ.svg"> is a row in the circulant matrix <img src="..\003_media\azPQdhk1g1.svg"> and <!-- $\mathbf{p}$ --> <img style="transform: translateY(0.1em)" src="..\003_media\rCRApphzIv.svg"> as well as <!-- $\mathbf{e}$ --> <img src="..\003_media\8lcVRpOlYT.svg"> the two vectors, we can now rewrite
+This is called a circular convolution which is one of the main features of circulant matrices [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Circulant_matrix#Analytic_interpretation) and can be made very performant: Given that <!-- $\mathbf{a}$ --> <img src="..\003_media\L1AubYq1sQ.svg"> is a row in the circulant matrix <img src="..\003_media\azPQdhk1g1.svg"> and <!-- $\mathbf{p}$ --> <img style="transform: translateY(0.1em)" src="..\003_media\rCRApphzIv.svg"> as well as <!-- $\mathbf{e}$ --> <img src="..\003_media\8lcVRpOlYT.svg"> are the two vectors, we can now rewrite
 
 <!-- $$
 \mathbf{e} = \mathbf{Ap}
@@ -56,20 +56,20 @@ $$ -->
 <div align="center"><img style="background: white;" src="..\003_media\7ylMMTbYrp.svg"></div>
 <br/>
 
-with $\mathcal{F}$ being the Fast Fourier Transform (FFT) and $\mathcal{F}^{-1}$ its inverse. The main advantage of utilizing the FFT is that it scales with __*O(N log(N))*__ instead of __*O(N²)*__. This means it needs much less steps than the matrix-vector multiplication and, therefore, reduces round-off error and improves speed a lot.
+with $\mathcal{F}$ being the Fast Fourier Transform (FFT) and $\mathcal{F}^{-1}$ its inverse. The main advantage of utilizing the FFT is that it scales with __*O(N log(N))*__ instead of __*O(N²)*__. This means for larger problems it needs far fewer steps than the matrix-vector multiplications we used so far and, therefore, reduces round-off error and improves speed a lot.
 
 
 ## Implementation
 
-The main crux of the implementation is to get the convolution right as we are dealing with *3x3* tensors. Sticking to the above notation a simplified Matlab code would look like:
+The main crux of the implementation is to get the convolution right as we are dealing with *3x3* tensor elements. Sticking to the above notation a simplified Matlab code would look like:
 
     e(:,1) = ifft( fft(a(:,1)) .* fft(p(:,1))  +  fft(a(:,2)) .* fft(p(:,2))  +  fft(a(:,3)) .* fft(p(:,3)) );
     e(:,2) = ifft( fft(a(:,2)) .* fft(p(:,1))  +  fft(a(:,5)) .* fft(p(:,2))  +  fft(a(:,6)) .* fft(p(:,3)) );
     e(:,3) = ifft( fft(a(:,3)) .* fft(p(:,1))  +  fft(a(:,6)) .* fft(p(:,2))  +  fft(a(:,9)) .* fft(p(:,3)) );
 
-with `e(:,1)`, `e(:,2)` & `e(:,3)` being the vectors of all *x*, *y* & *z* component of *e*, respectively, and `p(:,1)`, `p(:,2)` & `p(:,3)` the same for *p*. `a(:,1)` to `a(:,9)` correspond to the vectors of the nine elements of the *3x3* tensor discussed [here](../100_simpleDDA#the-code).
+with `e(:,1)`, `e(:,2)` & `e(:,3)` being the vectors of all *x*, *y* & *z* component of *e*, respectively, and `p(:,1)`, `p(:,2)` & `p(:,3)` of *p*. `a(:,1)` to `a(:,9)` correspond to the vectors of the nine elements of the *3x3* tensor which we already discussed [here](../100_simpleDDA#the-code).
 
-In the real code some reshaping is needed to translate between the different memory layouts of the vectors. Furthermore, `fft(a(:,:))` is precomputed and saved as `fftA` during setting up `a`, because it is constant.
+For our real Matlab code some reshaping is needed to translate between the different memory layouts of the vectors. Furthermore, because `fft(a(:,:))` is constant it is precomputed and saved as `fftA` already during setting up of `a`.
 
 Adapting the solvers is the easy part here, as the matrix-vector multiplications such as
 
@@ -88,7 +88,7 @@ Changed Files           | Notes
 :-----                  |:--------
 advancedDDA.m           | main file
 create_fftA             | create row of A and already fast-Fouriertransfom it
-Conv3D                  | convolution algorithm
+Conv3D                  | convolution function
 ccg_Sarkar_FFT.m        | CCG method with FFT
 myqmr_FFT.m             | QMR method with FFT
 
@@ -147,6 +147,6 @@ The results of our standard example of a Gold sphere with the 50-nm diameter, 2.
 
 This is a *20x* improvement from the 766.3&thinsp;s we had before! 
 
-Note, due to the much larger grid, the observed accuracy in the spectra actually got a bit worse. However, when compensating it by reducing the tolerance from `1e-2` to `0.5e-2` the requirde cpu time was with 75.7&thinsp;s still *10x* faster. 
+Note, due to the much larger grid, the observed accuracy in the spectra actually got a bit worse. However, when compensating for it by reducing the tolerance from `1e-2` to `0.5e-2` the required CPU time was with 75.7&thinsp;s still *10x* faster. Hence, it is a big improvement!
 
-Additionally, in the [next section](../320_advancedDDA_FFT-optimized) we will introduce further optimizations.
+Nevertheless, in the [next section](../320_advancedDDA_FFT-optimized) we will introduce further optimizations.
