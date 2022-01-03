@@ -1,12 +1,12 @@
 # 330_advancedDDA_GPU
 
-*In the last two section we introduced and optimized the FFT/convolution in our code. Now we will utilized the power of GPUs to optain significant perfomance improvements*
+*In the last two section we introduced and optimized the FFT/convolution in our code. Now we will utilized the power of modern-day GPUs to optain significant perfomance improvements.*
 
 ## Matlab and GPUs
 
-Utilizing the compute capabilities of GPUs is not easy. Fortunately, Matlab implemented an easy but still powerful abstraction for using it. 
+Utilizing the compute capabilities of GPUs is not straigh forward as it requires learning new memory models, shader languages, utilities and so on. Fortunately, Matlab implemented an easy but still powerful abstraction for using it:
 
-The main thing to do is to wrap data on the CPU, e.g. `x_cpu`, in a data structure on the GPU via `x_gpu = gpuArray(x_cpu)`. This sends the data to the GPU and, if done for all essential data structures, the evaluation will take place directly on the GPU. At the end, the results can be transfered back via `x_cpu = gather(x_gpu)`. But be aware, that profiling computations on the GPU using Matlab can be quite misleading as the profiler itself still runs on the CPU.
+The main thing to do in our Matlab code is to wrap data on the CPU, e.g. `x_cpu`, in a data structure on the GPU via `x_gpu = gpuArray(x_cpu)`. On excecution this transfers the data to the GPU and, if done for all essential data structures, the evaluation will automatically take place directly on the GPU. At the end, the results can be transfered back via `x_cpu = gather(x_gpu)`. But be aware, profiling computations on the GPU using Matlab can be quite misleading as the profiler itself still runs on the CPU.
 
 
 ## Code Changes
@@ -72,4 +72,6 @@ The results of our standard example of a Gold sphere with the 50-nm diameter, 2.
     Overall required cpu/gpu time: 2.8s
 
 
-Besides the first run being somewhat slower due to the initialization of the GPU, the results shown here are very encouraging. Switching from a AMD Ryzen 5950X CPU to a Nvidia RTX 3090 GPU resulted in nearly another *10x* speed up. But, [more improvements are yet to come.](../340_advancedDDA_GPU-optimized)
+Besides the first run being somewhat slower (not shown) due to the initialization of the GPU, the results shown here are very encouraging. Switching from a AMD Ryzen 5950X CPU to a Nvidia RTX 3090 GPU resulted in nearly another *10x* speed up. That is very impressive!
+
+But, still [more improvements are yet to come.](../340_advancedDDA_GPU-optimized)
