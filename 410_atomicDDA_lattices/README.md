@@ -5,20 +5,20 @@
 
 ## Abstraction
 
-So far we implemented the lattice together with the geometry. This means for each new lattice -- even when we want to just rotate the lattice by 90 degree -- the construction of the geometry has to be reimplement. This is not ideal and, hence, we need to introduce a better abstraction.
+So far we implemented the lattice together with the geometry. This means for each new lattice -- even when we want to just rotate the lattice by 90 degree -- the construction of the geometry has to be reimplement. This is not ideal and we should use a better abstraction:
 
-First, we define a lattice object, which contains functions for transfering from the *(a,b,c)* integer base to the *(x,y,z)* real coordinates and back as well the dipole density `rho` and a *limits* function, which return the min/max *(a,b,c)* values of an real-space coordinates.
+* First, we define a lattice object, which contains methods for transferring from the *(a,b,c)* integer base to the *(x,y,z)* real coordinates and back, the dipole density `rho` as well as a *limits* methods, that return the min/max *(a,b,c)* values of an real-space coordinates.
 
-Then, we define a geometry object, that gives back the limits of the geometry and has a function which is true if a grid point is inside the geometry. 
+* Then, we define a geometry object, that gives back the limits of the geometry and has a method which is true if a grid point is inside the geometry. 
 
-Finally, the space is created using the geometry and lattice objects by finding the limits of the space and then setting all `r_on` true that are inside the geometry. 
+* Finally, the space is created using the geometry and lattice objects by finding the limits of the space and setting all `r_on` true that are inside the geometry. 
 
 
 ## Field Maps
 
-Besides the spectra one can calculate electric field maps from the solved dipole polarizations. The basic algorithm is to define a grid of pixels and then calculate the contribution of all dipoles to the field of that pixel. This can take quite a while and, hence, we group the pixels in vectors for faster evaluations and use the GPU by default.
+Besides the spectra one can also calculate electric field maps from the obtained dipole polarizations. The basic algorithm is to define a grid of pixels and then calculate for each pixel the contribution of all dipoles to the local electric field. This can take quite a while. Therefore, we vectorize again by grouping lines of pixels together and also use the GPU.
 
-Furthermore, as dipoles have a singularity at their center, the pixels at atom positions have to be mask for obtaining meaningful results. Linear and logarithmic scales are possible as well as multiple plots with different resolutions.
+Furthermore, as dipoles have a singularity at their center, the pixels at atom positions have to be mask to obtain meaningful results. Linear and logarithmic scales are also implemented as well as multi-resolution plots.
 
 
 ## Code Changes
@@ -29,7 +29,7 @@ atomicDDA.m             | main file
 Lattice_SCP             | simple cubic packing
 Lattice_FCC             | face centered cubic packing
 Lattice_FCC _Rot        | face centered cubic packing rotated by 90 degree around z axis
-Geo_Ellipsoid           | definition of a ellispsoid
+Geo_Ellipsoid           | definition of a ellipsoid
 Geo_Spheroid            | definition of a spheroid
 Geo_SpheroidPair        | definition of a spheroid pair
 create_Space            | construction of the grid space
@@ -116,4 +116,4 @@ A pair of Gold spheroids with a long axis of 20&thinsp;nm, a short axis of 10&th
 <div align="center"><img src="../003_media/pair_final.jpg" alt="Geometry and spectra and field plot of a spheroid pair"></div>
 <br/>
 
-This looks now very nice. In the [next section](../420_atomicDDA_stacking-faults) we will introduce lattices with stacking faults.
+This looks very nice now. In the [next section](../420_atomicDDA_stacking-faults) we will introduce lattices with stacking faults.
