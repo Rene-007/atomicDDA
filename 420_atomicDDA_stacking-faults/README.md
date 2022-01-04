@@ -1,27 +1,33 @@
 # 420_atomicDDA_stacking-faults
 
-*In the last section we abstracted the lattices implementation. Here we will make use of it and implement an abc lattice with stacking faults which is needed for simulating single-crystalline nanostructures.*
+*In the last section we abstracted the lattices implementation. Here we will make use of that and implement an abc lattice with stacking faults which is needed for simulating single-crystalline nanostructures.*
 
 
 ## Motivation
 
-Apparently, a lot of crystalline nanoparticles do not have the perfect fcc symmetry which we discussed in the last section. For example Gold, Silver and Copper nanorods/wires have a 5-fold twinned pentagonal symmetry [-- see Xia et al. 2009](https://www.doi.org/10.1002/anie.200802248). And if one likes to obtain arbitrarily shaped single-crystalline nanostructures, it is better to grow closely packed (Gold) flakes first [[1](https://www.doi.org/10.1002/crat.201400429),[2](https://www.doi.org/10.1021/acs.cgd.7b00849)] and then structure them using an ion beam [[3](https://www.doi.org/10.1038/ncomms1143),[4](https://www.doi.org/10.1021/nl3007374),[5](https://www.doi.org/10.1038/nphoton.2015.141),[6](https://www.doi.org/10.1038/s41467-019-14011-6),[7](https://www.doi.org/10.1021/acs.nanolett.1c00182)].
+There are different kind of crystalline nanostructures: 
 
-In general, there are two ways to closely package spheres: hcp and fcc lattices. They both have a hexagonal arrangement of the individual layers but differentiate in the way these layers are stacked upon each oter. Below is an image from wikipedia illustrating a hcp stacking on the left and fcc stacking on the right. [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres) 
+* On the one hand we have unprocessed chemically grown nanoparticles which often do not have the fcc symmetry we discussed in the last section but depending on the shape different symmetries. For example gold, silver and copper nanorods/wires have a 5-fold twinned pentagonal symmetry [-- see Xia et al. 2009](https://www.doi.org/10.1002/anie.200802248). Hence, for each shape type new symmetries have to be implemented.
+
+* On the other hand one can grow closely packed (gold) flakes first [[1](https://www.doi.org/10.1002/crat.201400429),[2](https://www.doi.org/10.1021/acs.cgd.7b00849)] and then structure them using a focused ion beam microscope [[3](https://www.doi.org/10.1038/ncomms1143),[4](https://www.doi.org/10.1021/nl3007374),[5](https://www.doi.org/10.1038/nphoton.2015.141),[6](https://www.doi.org/10.1038/s41467-019-14011-6),[7](https://www.doi.org/10.1021/acs.nanolett.1c00182)] to obtain arbitrarily shaped single-crystalline nanostructures. In this case the lattice symmetries is independent of the shape. 
+
+Here we will go with the latter.
+
+In general, there are two ways to closely package spheres: hcp and fcc lattices. They both show a hexagonal arrangement of the individual layers but differentiate themselves in the way these layers are stacked upon each other. Below is an image from wikipedia illustrating the hcp stacking on the left and fcc stacking on the right hand side. [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres) 
 
 <br/>
-<div align="center"><img src="../003_media/Close_packing.svg" alt="hcp vs fcc from wikipedia"></div>
+<div align="center" style="width:50%;"><img src="../003_media/Close_packing.svg" alt="hcp vs fcc from wikipedia"></div>
 <br/>
 
-When one assigns *A*, *B* & *C* to the layer positions then hcp is always ABABABABA..., while fcc is ABCABCABC... or CBACBACBA... . However, they can also be mixed together such as ABCABC<b>ABA</b>CBACBA which would mean we have a stacking fault in the center. For a proper flake to grow we need at least two stacking faults as depicted below. 
+When one assigns *A*, *B* & *C* to the layer positions then hcp is always ABABABABA..., while fcc is either ABCABCABC... or CBACBACBA... . However, by chance they can also be mixed together during growth and we get for example a ABCABC<b>ABA</b>CBACBA stacking which shows a so called *stacking fault* in the center. In order to get flakes to grow one actually needs a seed with two stacking faults. To illustrate that a small flake is depicted below:
 
 <br/>
 <div align="center"><img src="../003_media/flake_stacking.jpg" alt="a flake with two stacking faults"></div>
 <br/>
 
-The different layer positions are highlighted in gold, bronze & silver colors and the stacking order is ABC<b>A</b>CBA<b>C</b>ABC with the faults indicated by red arrows.
+In this sketch the different layer positions are highlighted in gold, bronze & silver colors and the stacking order is ABC<b>A</b>CBA<b>C</b>ABC (bottom to top) with the faults indicated by red arrows.
 
-Therefore, if we want to simulate flakes and arbitrarily-shaped nanostructures we have to implement such an ABC lattice with stacking faults.
+Hence, if we want to simulate flakes and arbitrarily-shaped nanostructures made of them we have to implement ABC lattices with stacking faults.
 
 
 ## Implementation
@@ -33,7 +39,7 @@ The basic idea behind implementing the stacking faults with hcp, fcc and inverse
     y = 0.0*a + sin60*b + yPos*(c+2*(d-1));
     z = 0.0*a +   0.0*b + zPos*c;  
 
-This means, we shift the *y* poisition of the atom depending on the value of *d*. But, which combinations of *(a,b,c,d)* for a given stacking are allowed? The answer is all but obvious and for *Lattice_ABC_Dir_Y* as following:
+This means, we shift the *y* position of the atom depending on the value of *d*. But, which combinations of *(a,b,c,d)* for a given stacking are allowed? The answer is all but obvious and for *Lattice_ABC_Dir_Y* as following:
 
 
     % check if atoms are allowed
@@ -41,7 +47,7 @@ This means, we shift the *y* poisition of the atom depending on the value of *d*
 
 with `lattice.layerNumber = 3` in all our cases and `stacking.pos(c)` the difference in position compared to the normal fcc case and depending on the actual stacking. For defining the latter we created a stacking object.
 
-Note, filling the space can be done by looping over the *(a,b,c,d)* parameters in various ways. We found the numercially most stable are:
+Note, filling the space can be done by looping over the *(a,b,c,d)* parameters in various ways. We found the numerically most stable are:
     
     Lattice_ABC_Dir_Y & Lattice_ABC_Dir_XY_rot ->  c-a-b-d 
     Lattice_ABC_Dir_XY & Lattice_ABC_Dir_Y_rot ->  c-b-a-d
