@@ -1,6 +1,6 @@
 # atomicDDA
 
-Simulating the optical properties of metal nanostructure is a well-established field with methods such as FDTD, FEM or BEM beeing commonly used. However, when reaching out for the ultimate limit like atomic-scale gaps in nanoparticle dimers, these methods facing problems: Besides numerical difficulties in the gap region (discretization & stability of the solution) they have problems modeling the underlying atomic arrangement of the geometry properly.
+Simulating the optical properties of metal nanostructure is a well-established field with methods such as FDTD, FEM or BEM being commonly used. However, when reaching out for the ultimate limit like atomic-scale gaps in nanoparticle dimers, these methods facing problems: Besides numerical difficulties in the gap region (discretization & stability of the solution) they have problems modeling the underlying atomic arrangement of the geometry properly.
 
 ![A gold dimer ready to be simulated](/003_media/regrown-dimer_1-000-000-atoms.jpg "A gold dimer ready to be simulated")
 
@@ -10,7 +10,7 @@ Here we present the atomic Discrete Dipole Approximation (atomicDDA) in an attem
 
 This repository aims to be on the one hand a step-by-step introduction to DDA and its optimizations to make it a productive tool, and on the other hand to show how atomic lattices with stacking faults can be implemented to make the simulation of the above mentioned atomic-gap dimers feasible.
 
-The code was originally developed with [Matlab](https://www.mathworks.com/products/matlab.html "Link to Matlab product page from MathWorks") but implementation in [Julia](https://julialang.org/ "Link to the Julia programming language homepage") and [Rust](https://www.rust-lang.org/ "Linkt to the Rust programming language homepage") are intended. It is divided in four main chapters and several subsections:
+The code was originally developed with [Matlab](https://www.mathworks.com/products/matlab.html "Link to Matlab product page from MathWorks") but implementation in [Julia](https://julialang.org/ "Link to the Julia programming language homepage") and [Rust](https://www.rust-lang.org/ "Link to the Rust programming language homepage") are intended. It is divided in four main chapters and several subsections:
 
 __I. A simple introduction to the Discrete Dipole Approximation__
   * [100_simpleDDA](100_simpleDDA)  
@@ -48,11 +48,11 @@ __IV. The atomicDDA__
   * [440_atomicDDA_flat](440_atomicDDA_flat)  
     _Bonus. A different memory layout._
 
-The chapters and subsection encode the first and second numbers of the subreporitories, resepectively, and the third number indicate the programming language (0 = Matlab, 1 = Julia, 2 = Rust). The subreporitories are self contained and only the [000_data](000_data) folder is additionally required as it contains common optical & flake data.
+The chapters and subsection encode the first and second numbers of the subrepositories, respectively, and the third number indicate the programming language (0 = Matlab, 1 = Julia, 2 = Rust). The subrepositories are self contained and only the [000_data](000_data) folder is additionally required as it contains common optical & flake data.
 
 
 ## Credits
-The discrete dipole approximation is a well-estabished method -- we are standing on the shoulders of giants. Hence, I like to mention a few publications this code is based on (roughly up to the convolution method):
+The discrete dipole approximation is a well-established method -- we are standing on the shoulders of giants. Hence, I like to mention a few publications this code is based on (roughly up to the convolution method):
 * Purcell, E. M. & Pennypacker, C. R. *Scattering and Absorption of Light by Nonspherical Dielectric Grains.* Astrophys. J. __186__, 705 (1973). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1086/152538)
 * Draine, B. T. *The discrete-dipole approximation and its application to interstellar graphite grains.* Astrophys. J. __333__, 848 (1988). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1086/166795)
 * Goodman, J. J., Flatau, P. J. & Draine, B. T. *Application of fast-Fourier-transform techniques to the discrete-dipole approximation.* Opt. Lett. __16__, 1198 (1991). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1364/OL.16.001198)
