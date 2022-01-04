@@ -1,24 +1,24 @@
 # 400_atomicDDA
 
-*In the last chapter we utilized FFTs/convolutions and the GPU to improve the performance of our code by __two orders of magnitude__. Here we will use the gained speed to bring the discretization to its ultimate limit -- __the atomic scale__ -- where each dipole reprents an atom.*
+*In the last chapter we utilized FFTs/convolutions and the GPU to improve the performance of our code by __two orders of magnitude__. Here we will use the gained speed to bring the discretization of the nanoparticles to its ultimate limit -- __the atomic scale__ -- where each dipole represents an atom.*
 
 ## A New Grid
 
 Gold usually occurs in a face-centered cubic (fcc) arrangement and has a lattice constant of 0.40782&thinsp;nm [<img src="../003_media/External.svg" height="14">](https://periodictable.com/Elements/079/data.html). 
 
-So far we used a simple-cubic packing (scp) which nicely maps to cartesian coordinates and, hence, besides a simple scaling no further transformations were needed. Now, we have to implement a proper transformation that maps from a triplet of integer points *(a,b,c)* to floating-point coordinates *(x,y,z)* of the fcc lattice. The transformation look like:
+So far we used for our discretization a simple-cubic packing (scp) because it nicely maps to cartesian coordinates and, hence, no further transformations are needed besides a simple scaling of the overall size. For representing the atomic lattice of gold, we have to implement a proper transformation that maps from a triplet of integer points *(a,b,c)*, i.e. memory locations, to floating-point coordinates *(x,y,z)* of the fcc lattice. The transformation looks like:
 
     % Constants
     sin60 = 0.86602540378;
-    yPos = 0.288675134594;
-    zPos = 0.816496580927;
+    yPos  = 0.28867513459;
+    zPos  = 0.81649658092;
 
     % Coordinate transformation
-    x = 1.0*a +   0.5*b +  0.5*c;                
-    y = 0.0*a + sin60*b + yPos*c;
-    z = 0.0*a +   0.0*b + zPos*c;
+    x  =  1.0*a  +    0.5*b  +   0.5*c;                
+    y  =  0.0*a  +  sin60*b  +  yPos*c;
+    z  =  0.0*a  +    0.0*b  +  zPos*c;
 
-The fcc and the hexagonal close-packed (hcp) lattices have the closest possible packing [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres) and are <!-- $\sqrt{2}$ --> <img style="transform: translateY(0.1em);" src="..\003_media\Y5xG26lFnO.svg"> more dense than the simple cubic packing (scp) that we have used so far. Hence, we have to increase the in teh code used dipole density `rho` by a factor of <img style="transform: translateY(0.1em);" src="..\003_media\Y5xG26lFnO.svg"> to account for that. Furthermore, the spacing between the dipoles has to be set to  `spacing = d_Au =  0.40782&thinsp;nm`.
+Futhermore, the fcc as well as the hexagonal close-packed (hcp) lattices have the closest possible packing [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres) and are <!-- $\sqrt{2}$ --> <img style="transform: translateY(0.1em);" src="..\003_media\Y5xG26lFnO.svg"> more dense than the scp. Hence, we have to increase the dipole density `rho` by a factor of <img style="transform: translateY(0.1em);" src="..\003_media\Y5xG26lFnO.svg"> to account for that. Finally, the spacing between the dipoles has to be set to  `spacing = d_Au =  0.40782 nm`.
 
 
 ## Code Changes
@@ -32,7 +32,7 @@ create_SpheroidPair_ext_fcc | create space for a pair of spheroids in a fcc latt
 
 ## Results
 
-For a Gold sphere with a diameter of 10&thinsp;nm this results in 10889 atoms and:
+For a gold sphere with a maximum diameter of 10&thinsp;nm this leads to 10889 atoms and the following results:
 
     >> atomicDDA
     Building a 9.79nm x 9.79nm spheroid with 226981 grid points and 10889 dipoles
@@ -103,4 +103,4 @@ For a Gold sphere with a diameter of 10&thinsp;nm this results in 10889 atoms an
 <div align="center"><img src="../003_media/sphere-10nm-atomic_final.jpg" alt="Geometry and spectra of an atomic 10nm Gold sphere"></div>
 <br/>
 
-Which looks aready quite good. Nevertheless, in the [next section](../410_atomicDDA_lattices) we will make everything a bit nicer.
+That looks already quite good. Nevertheless, in the [next section](../410_atomicDDA_lattices) we will make everything a bit nicer.
