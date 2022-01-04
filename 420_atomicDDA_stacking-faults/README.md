@@ -16,7 +16,7 @@ Here we will go with the latter.
 In general, there are two ways to closely package spheres: hcp and fcc lattices. They both show a hexagonal arrangement of the individual layers but differentiate themselves in the way these layers are stacked upon each other. Below is an image from wikipedia illustrating the hcp stacking on the left and fcc stacking on the right hand side. [<img src="../003_media/External.svg" height="14">](https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres) 
 
 <br/>
-<div align="center" style="width:50%;"><img src="../003_media/Close_packing.svg" alt="hcp vs fcc from wikipedia"></div>
+<div align="center"><img src="../003_media/Close_packing.svg" alt="hcp vs fcc from wikipedia" width="50%"></div>
 <br/>
 
 When one assigns *A*, *B* & *C* to the layer positions then hcp is always ABABABABA..., while fcc is either ABCABCABC... or CBACBACBA... . However, by chance they can also be mixed together during growth and we get for example a ABCABC<b>ABA</b>CBACBA stacking which shows a so called *stacking fault* in the center. In order to get flakes to grow one actually needs a seed with two stacking faults. To illustrate that a small flake is depicted below:
