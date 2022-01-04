@@ -48,11 +48,11 @@ __IV. The atomicDDA__
   * [440_atomicDDA_flat](440_atomicDDA_flat)  
     _Bonus. A different memory layout._
 
-The chapters and subsection encode the first and second numbers of the subreporitories, resepectively, and the third number indicate the programming language (0 = Matlab, 1 = Julia, 2 = Rust). The subreporitories are self contained and only [000_data](000_data) is needed for optical / flake data.
+The chapters and subsection encode the first and second numbers of the subreporitories, resepectively, and the third number indicate the programming language (0 = Matlab, 1 = Julia, 2 = Rust). The subreporitories are self contained and only the [000_data](000_data) folder is additionally required as it contains common optical & flake data.
 
 
 ## Credits
-The discrete dipole approximation is a well-estabished method and I like to mention a few publications this code is based on:
+The discrete dipole approximation is a well-estabished method -- we are standing on the shoulders of giants. Hence, I like to mention a few publications this code is based on (roughly up to the convolution method):
 * Purcell, E. M. & Pennypacker, C. R. *Scattering and Absorption of Light by Nonspherical Dielectric Grains.* Astrophys. J. __186__, 705 (1973). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1086/152538)
 * Draine, B. T. *The discrete-dipole approximation and its application to interstellar graphite grains.* Astrophys. J. __333__, 848 (1988). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1086/166795)
 * Goodman, J. J., Flatau, P. J. & Draine, B. T. *Application of fast-Fourier-transform techniques to the discrete-dipole approximation.* Opt. Lett. __16__, 1198 (1991). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1364/OL.16.001198)
