@@ -34,27 +34,27 @@ If we want to simulate flakes and arbitrarily-shaped nanostructures made of them
 
 ## Implementation
 
-The basic idea behind implementing the stacking faults with hcp, fcc and inverse ffc lattices is to introduce a more general grid that can hold all of these lattices locally. We accomplish this by adding a forth parameter *d*, that holds the lattice displacement, to our integer triplet *(a,b,c)*. For example in the *"Lattice_ABC_Dir_Y"* lattice implementation the code reads like:
+The basic idea behind implementing the stacking faults with hcp, fcc and inverse ffc lattices is to introduce a more general grid that can hold all of these lattices locally. We accomplish this by adding a forth parameter *d*, that represents a displacement, to our integer triplet *(a,b,c)*. For example in the simplest lattice implementation (*"Lattice_ABC_Dir_Y"*), which builds on the [fcc lattice from before](../400_atomicDDA), the code now reads like:
 
     % Coordinate transformation
     x = 1.0*a + 0.5*b + 0.5*c;
     y = 0.0*a + sin60*b + yPos*(c+2*(d-1));
     z = 0.0*a +   0.0*b + zPos*c;  
 
-Here the *y* position of the atoms are shifted depending on the value of *d*. Initially this looks good but when inspecting the resulting positions closely one finds that for constant *(a,b,c)* and varying  *d*, the atoms `d=1`,`d=2` & `d=3` overlap, `d=4` overlays with `d=1` of another *(a,b)* combination, `d=5` with `d=2` and so on. This is not physical. Hence, we have to restrict which combinations of *(a,b,c,d)* are allowed. This is not trivial as it depend on the precise stacking order and other details but the outcome for *"Lattice_ABC_Dir_Y"* is:
+Here *d* shifts the *y* position of the atoms, such that we can switch between ABA and ABC. Initially this looks good but when inspecting the resulting positions closely one finds that for constant *(a,b,c)* and varying  *d*, the atoms `d=1`,`d=2` & `d=3` overlap, `d=4` overlays with `d=1` of another *(a,b)* combination, `d=5` with `d=2` and so on. This is not physical. Hence, we have to restrict which combinations of *(a,b,c,d)* are allowed. This is not trivial as it depend on the precise stacking order and other details. Nevertheless, for *"Lattice_ABC_Dir_Y"* the outcome is:
 
 
     % check if atoms are allowed
     lattice.okay = @(a,b,c,d) ( mod((c-stacking.pos(c)+1),lattice.layerNumber) == d );
 
-with `lattice.layerNumber` equals `3` as we have with *A,B & C* three different principal positions. Furthermore, for a given layer *c* the vector `stacking.pos(c)` returns the difference in position compared to a pure fcc lattice  and it depends on the stacking of the layers which come before. This stacking is a characteristics of the individual flake and one can learn more about it with [this simulation](https://www.kullock.de/flake-growth/). 
+with `lattice.layerNumber` equals `3`, because we have three principal positions, and `stacking.pos(c)` being the difference in position compared to a pure fcc lattice. The latter depends on which layer *c* we are considering and also on all layers that come before. This stacking is a characteristics of the individual flake and one can learn more about it with [this simulation](https://www.kullock.de/flake-growth/). 
 
-Finally, we also have to define a layout of our array in memory. In theory this should not matter, however, in reality there are round-off errors and so on and we found that the numerically most stable layouts are:
+Finally, we also have to define a memory layout of our array. In theory this should not matter, however, in practice there are round-off errors, algorithmic preferences and so on, and we found that the numerically most stable layout is:
     
     Lattice_ABC_Dir_Y & Lattice_ABC_Dir_XY_rot ->  c-a-b-d 
     Lattice_ABC_Dir_XY & Lattice_ABC_Dir_Y_rot ->  c-b-a-d
 
-depending the lattice orientation.
+Note, *Lattice_ABC_Dir_XY* is similar to *Lattice_ABC_Dir_Y* but here *d* shifts in *XY* direction instead of just *Y*, while the *..._rot* variants are simple 90° rotations of the lattices around the *z* axis, which can be handy when modelling certain particle arrangements. 
 
 
 ## Code Changes
@@ -77,7 +77,7 @@ fill_Space              | updated with stacking faults -- fast version
 
 ## Results
 
-A pair of Gold spheroids with [-3,4] stacking, a long axis of 20 nm, a short axis of 10 nm and a gap of 2 nm results in 43602 atoms and the following output:
+A pair of Gold spheroids with [-3,4] stacking, a long axis of 20&thinsp;nm, a short axis of 10&thinsp;nm and a gap of 2&thinsp;nm results in 43602 atoms and the following output:
 
     >> atomicDDA
     Building a spheroid pair with a size of 41.6nm x 9.9nm x 10.0nm consisting of 2386503 
