@@ -1,24 +1,26 @@
 # 430_atomicDDA_flakes
 
-*Since we have by now implemented all necessary ingredients, we can go the final step and import arbitrary structure made of Gold flakes.*
+*Since we have implemented all necessary ingredients by now, we can finally go the last step and import arbitrary structure made of gold flakes.*
 
 
 ## Structures
 
-The structures can be generated and exported using the flake-growing simulation which can be found [here](https://github.com/Rene-007/flake_growth). It allows not only to simulate the growth of Gold flakes for various parameter but also the regrowth of structured flakes. For example a structured and regrown dimer is shown below. 
+The nanostructures are generated and exported using the flake-growing simulation (*"Flake-Growth"*) which can be found [here](https://github.com/Rene-007/flake_growth). It allows not only to simulate the growth of gold flakes for various parameter but also the regrowth of structured flakes. An example of a regrown dimer is shown here: 
 
 <br/>
 <div align="center"><img src="../003_media/flake-growth.jpg" alt="a flake with two stacking faults"></div>
 <br/>
 
-The atom positions can be exported such that we can use them within our *atomicDDA*.
+The positions of the atoms can be exported from *Flake-Growth* in a `Lattice_ABC_Dir_Y` grid and, hence, we can reuse the data within our *atomicDDA* code.
 
 
 ## Implementation
 
-The particle creation part has been refactored into its own function `create_ParticleSpace` such that an equivalent `create_FlakeSpace` could be written which imports the data, extracts the stacking faults & atom positions as well as builds the grid space. Note, `Flake-Growth` exports the data in a `Lattice_ABC_Dir_Y` grid.
+In order to import the data, the particle creation part had to be refactored into its own function `create_ParticleSpace` such that an equivalent `create_FlakeSpace` could be written which imports the data, extracts the stacking faults & atom positions as well as builds the grid space.
 
-Furthermore, as now also surface atoms have a marker, this can be used for a faster 3D visualization of the structures. The remaining code did not need to be changes significantly.
+As surface atoms are also marked by *Flake-Growth*, we can now neglect bulk atoms only draw them. This speeds up the 3D visualization of our structures significantly. 
+
+The remaining code did not change significantly.
 
 
 ## Code Changes
@@ -37,7 +39,7 @@ create_FlakeSpace       | flake creation
 
 ## Results
 
-For an imported regrowon gold dimer consisting of 1.000.000 atoms the calculation went as following:
+For an imported regrown gold dimer consisting of 1.000.000 atoms the calculation resulted in:
 
     >> atomicDDA
     Importing a flake with a size of 128.5nm x 35.2nm x 15.0nm consisting of 27683775 
@@ -146,14 +148,18 @@ For an imported regrowon gold dimer consisting of 1.000.000 atoms the calculatio
     Overall required cpu time: 1620.1s
 
 
-This took just 27&thinsp;min for 101 wavelengths and a dimer size which should be possible to preciesely manufacturable with a combination of top-down and bottom-up methods! So, controlling electric field on the atomic scale seems to be in reach.
+The cpu time of 1620&thinsp;s means that it took just ~27&thinsp;min for simulating 1 million atoms at 101 wavelength points!
 
-Resulting spectra and near-field distributions are plotted below.
+Considering that such dimer sizes (128.5&thinsp;nm x 35.2&thinsp;nm x 15.0&thinsp;nm) should be possible to preciesely manufacturable with a combination of top-down and bottom-up methods, controlling electric fields on the atomic scale seems to be within reach.
+
+Finally, we can also obtain spectra and near-field distributions:
 
 <br/>
 <div align="center"><img src="../003_media/regrown-dimer_1-000-000-atoms_final.jpg" alt="Geometry and spectra and field plot of a regrown dimer"></div>
 <br/>
 
-Interestingly, there is a structure of the field within the dimer and, of course, the details arrangement of atoms in the gap is very important. 
+Note, the field inside the dimer shows some structure, which is probably due to reflections of the field at the interfaces. The detailed arrangement of atoms in the gap region is very important for the field enhancement and spectral shape, too. 
 
-In the [next section](../440_atomicDDA_flat) there is a variant of the code with a flatten memory layout of the vector, i.e. less transposure are needed. However, this does not seem to change the performance of the code in Matlab. Hence, no further documentation is provided.
+In the [last section](../440_atomicDDA_flat) there is a variant of the code with a flatten memory layout of the vectors, i.e. a lot of vector/matrix transpositions should be saved. However, our Matlab code seems to perform the same and, hence, no further documentation is provided.
+
+This closes our small course on implementing the *DDA* algorithm efficiently and applying it to nanostructure on the atomic scale. I hope, you enjoyed it!
