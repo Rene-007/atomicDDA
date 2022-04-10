@@ -162,4 +162,4 @@ Note, the field inside the dimer shows some structure, which is probably due to 
 
 In the [last section](../440_atomicDDA_flat) there is a variant of the code with a flatten memory layout of the vectors, i.e. a lot of vector/matrix transpositions should be saved. However, our Matlab code seems to perform the same and, hence, no further documentation is provided.
 
-This closes our small course on implementing the *DDA* algorithm efficiently and applying it to nanostructure on the atomic scale. I hope, you enjoyed it!
+This closes our small course on implementing the *DDA* algorithm efficiently and applying it to nanostructure on the atomic scale. I hope you enjoyed it!
