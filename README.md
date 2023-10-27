@@ -60,6 +60,9 @@ The discrete dipole approximation is a well-established method -- we are standin
 * Loke, V. L. Y., Pinar Mengüç, M. & Nieminen, T. A. *Discrete-dipole approximation with surface interaction: Computational toolbox for MATLAB.* J. Quant. Spectrosc. Radiat. Transf. __112__, 1711 (2011). [<img src="003_media/External.svg" height="14">](https://www.doi.org/10.1016/j.jqsrt.2011.03.012)
 
 
+## Funding 
+This work was supported by the Volkswagen Foundation (93437 and A127968).
+
 
 ## License
 This project is licensed under the [GNU General Public License v2.0](LICENSE "Link to the GPL") and if you publish scientific work which is based on this code I would be grateful if you include a reference to this Github source page. If you have any issues with that feel free to contact me.
