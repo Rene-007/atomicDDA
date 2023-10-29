@@ -61,7 +61,7 @@ The discrete dipole approximation is a well-established method -- we are standin
 
 
 ## Funding 
-This work was supported by the Volkswagen Foundation (Grant 93437 and A127968).
+This work was supported by the Volkswagen Foundation (Grant 93437).
 
 
 ## License
